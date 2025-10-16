@@ -15,12 +15,16 @@ const links = [
 ];
 
 const sceneContainer = document.querySelector(".scene-container");
-const svg = d3.select(".scene-container svg");
+const lensSvg = d3.select(".scene-container svg");
+const backgroundSvg = d3.select(".background-network");
+
 let width = 800;
 let height = 800;
 let hasSeededNodes = false;
 const RADIAL_PADDING = 40;
 const MIN_RADIAL_RADIUS = 120;
+
+backgroundSvg.attr("preserveAspectRatio", "xMidYMid meet");
 
 const simulation = d3.forceSimulation(nodes)
   .force("link", d3.forceLink(links).id(d => d.id).distance(160).strength(0.3))
@@ -37,14 +41,31 @@ const simulation = d3.forceSimulation(nodes)
       .strength(0.08)
   );
 
-const link = svg.append("g")
+const backgroundLink = backgroundSvg.append("g")
+  .attr("class", "background-links")
+  .attr("stroke-linecap", "round")
+  .selectAll("line")
+  .data(links)
+  .join("line")
+  .attr("class", "link--background");
+
+const backgroundNode = backgroundSvg.append("g")
+  .attr("class", "background-nodes")
+  .selectAll("circle")
+  .data(nodes)
+  .join("circle")
+  .attr("class", "node--background")
+  .attr("r", 3);
+
+const link = lensSvg.append("g")
+  .attr("class", "lens-links")
   .attr("stroke-linecap", "round")
   .selectAll("line")
   .data(links)
   .join("line")
   .attr("class", "link");
 
-const node = svg.append("g")
+const node = lensSvg.append("g")
   .selectAll("circle")
   .data(nodes)
   .join("circle")
@@ -53,7 +74,7 @@ const node = svg.append("g")
   .on("click", (event, d) => showPopup(d.img))
   .call(drag(simulation));
 
-const label = svg.append("g")
+const label = lensSvg.append("g")
   .selectAll("text")
   .data(nodes)
   .join("text")
@@ -61,6 +82,16 @@ const label = svg.append("g")
   .text(d => d.id);
 
 simulation.on("tick", () => {
+  backgroundLink
+    .attr("x1", d => d.source.x)
+    .attr("y1", d => d.source.y)
+    .attr("x2", d => d.target.x)
+    .attr("y2", d => d.target.y);
+
+  backgroundNode
+    .attr("cx", d => d.x)
+    .attr("cy", d => d.y);
+
   link
     .attr("x1", d => d.source.x)
     .attr("y1", d => d.source.y)
@@ -128,10 +159,15 @@ function syncRadarToContainer() {
   const centerX = width / 2;
   const centerY = height / 2;
 
-  svg
+  lensSvg
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("width", width)
     .attr("height", height);
+
+  backgroundSvg
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .attr("width", window.innerWidth)
+    .attr("height", window.innerHeight);
 
   if (!hasSeededNodes) {
     seedNodesRandomly(radius, centerX, centerY);
