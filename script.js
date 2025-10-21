@@ -14,6 +14,7 @@ const links = [
   { source: "Singer", target: "Cook" }
 ];
 
+// ======== sceneContainer(radar) 및 lines & nodes 생성
 const sceneContainer = document.querySelector(".scene-container");
 const lensSvg = d3.select(".scene-container svg");
 const backgroundSvg = d3.select(".background-network");
@@ -40,6 +41,7 @@ const simulation = d3.forceSimulation(nodes)
       )
       .strength(0.08)
   );
+  // ======== sceneContainer(radar) 및 lines & nodes 생성 끝
 
 const backgroundLink = backgroundSvg.append("g")
   .attr("class", "background-links")
@@ -80,7 +82,9 @@ const label = lensSvg.append("g")
   .join("text")
   .attr("class", "label")
   .text(d => d.id);
+// ======== sceneContainer(radar) 및 lines & nodes 생성 끝
 
+// ======== Making lines & nodes dragable - not on the bg but(only) the sceneContainer(radar)
 simulation.on("tick", () => {
   backgroundLink
     .attr("x1", d => d.source.x)
@@ -130,7 +134,9 @@ function drag(simulation) {
     .on("drag", dragged)
     .on("end", dragended);
 }
+// ======== Making lines & nodes dragable 끝
 
+// ======== Showing video popups
 function showPopup(imgUrl) {
   const popup = document.getElementById("popup");
   const popupImg = document.getElementById("popupImg");
@@ -145,7 +151,12 @@ function hidePopup() {
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") hidePopup();
 });
+// ======== Showing video popups 끝
 
+// ========
+/**
+ * Arranging the radar SVG and the nodes
+ */
 function syncRadarToContainer() {
   if (!sceneContainer) return;
 
@@ -191,5 +202,7 @@ function seedNodesRandomly(radius, centerX, centerY) {
   });
 }
 
+// ==== Rearranging the nodes when the window is resized
 window.addEventListener("resize", syncRadarToContainer);
 syncRadarToContainer();
+// ======== Arranging the radar SVG and the nodes 끝

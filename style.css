@@ -26,6 +26,7 @@ body {
   position: relative;
 }
 
+/* ======== bg ======== */
 .background-network {
   position: fixed;
   inset: 0;
@@ -37,6 +38,7 @@ body {
   mix-blend-mode: screen;
 }
 
+/* lines & nodes on bg */
 line.link--background {
   stroke: rgba(63, 242, 255, 0.2);
   stroke-width: 0.8;
@@ -51,7 +53,9 @@ circle.node--background {
   filter: none;
   opacity: 0.75;
 }
+/* ======== bg 끝 ======== */
 
+/* ======== hud(text UI) ======== */
 .hud {
   position: absolute;
   inset: 0;
@@ -118,7 +122,9 @@ circle.node--background {
 .hud__panel-list span {
   color: var(--accent);
 }
+/* ======== hud(text UI) 끝 ======== */
 
+/* ======== scene-contatiner(radar) ======== */
 .scene-container {
   position: relative;
   width: min(880px, 70vw);
@@ -160,6 +166,7 @@ text.label {
   text-shadow: 0 0 6px rgba(63, 242, 255, 0.5);
 }
 
+/* ==== pulse-ring(radar ring) ==== */
 .pulse-ring {
   position: absolute;
   inset: 50%;
@@ -194,7 +201,10 @@ text.label {
     opacity: 0.1;
   }
 }
+/* ==== pulse-ring(radar ring) 끝 ==== */
+/* ======== scene-contatiner(radar) 끝 ======== */
 
+/* ======== vedio popup ======== */
 .popup {
   position: fixed;
   top: 50%;
@@ -225,3 +235,4 @@ text.label {
   color: var(--accent);
   text-shadow: 0 0 8px rgba(63, 242, 255, 0.4);
 }
+/* ======== vedio popup 끝 ======== */
