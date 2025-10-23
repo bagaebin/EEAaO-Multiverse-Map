@@ -49,10 +49,16 @@
     </aside>
   </div> -->
 
-  <div class="popup" id="popup">
-    <span class="popup-close" onclick="hidePopup()">✕</span>
-    <img id="popupImg" src="" alt="node image" />
+  <div class="popup" id="popup" aria-hidden="true">
+    <span class="popup-close" role="button" aria-label="Close popup" onclick="hidePopup()">✕</span>
+    <div id="mediaWrap" class="popup__media">
+      <video id="popupVideo" playsinline muted preload="auto"></video>
+      <img id="popupImg" src="" alt="node media" />
+      <div id="popupFallback" class="popup__fallback" aria-live="polite"></div>
+      <div id="hotspotLayer" aria-hidden="true"></div>
+    </div>
   </div>
+  <div id="scrollGhost" aria-hidden="true"></div>
   <script src="script.js"></script>
 </body>
 </html>
