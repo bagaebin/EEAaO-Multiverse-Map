@@ -12,8 +12,18 @@ const NODE_LIBRARY = new Map([
           target: "Bagle",
         },
         {
-          timeRange: [3.2, 3.8],
-          rect: { x: 0.18, y: 0.4, w: 0.2, h: 0.28 },
+          timeRange: [0.903, 1.903],
+          rect: { x: 0.3733, y: 0.7784, w: 0.0679, h: 0.1299 },
+          target: "Actor",
+        },
+        {
+          timeRange: [1.806, 2.006],
+          rect: { x: 0.0225, y: 0.3938, w: 0.1107, h: 0.2379 },
+          target: "Sign Spinner",
+        },
+        {
+          timeRange: [3.11, 4.31],
+          rect: { x: 0.367, y: 0.3757, w: 0.0503, h: 0.0771 },
           target: "IRS Office",
         },
       ],
@@ -27,9 +37,9 @@ const NODE_LIBRARY = new Map([
       video: { src: "videos/02_Bagle.mp4", duration: 5 },
       hotspots: [
         {
-          timeRange: [2.0, 2.6],
-          rect: { x: 0.35, y: 0.28, w: 0.28, h: 0.32 },
-          target: "Everything Cultist",
+          timeRange: [2.957, 4.157],
+          rect: { x: 0.3482, y: 0.3236, w: 0.0931, h: 0.1629 },
+          target: "Young Evelyn",
         },
       ],
     },
@@ -46,6 +56,11 @@ const NODE_LIBRARY = new Map([
           rect: { x: 0.5, y: 0.3, w: 0.22, h: 0.3 },
           target: "Singer",
         },
+        {
+          timeRange: [2.286, 3.486],
+          rect: { x: 0.45, y: 0.5709, w: 0.1434, h: 0.3656 },
+          target: "Bagle",
+        },
       ],
     },
   ],
@@ -60,6 +75,16 @@ const NODE_LIBRARY = new Map([
           timeRange: [2.6, 3.2],
           rect: { x: 0.55, y: 0.42, w: 0.22, h: 0.24 },
           target: "Sign Spinner",
+        },
+        {
+          timeRange: [2.186, 3.386],
+          rect: { x: 0.8527, y: 0.5255, w: 0.0566, h: 0.1078 },
+          target: "Bagle",
+        },
+        {
+          timeRange: [2.424, 3.624],
+          rect: { x: 0.313, y: 0.306, w: 0.0264, h: 0.044 },
+          target: "Bagle",
         },
       ],
     },
@@ -76,6 +101,11 @@ const NODE_LIBRARY = new Map([
           rect: { x: 0.32, y: 0.26, w: 0.28, h: 0.34 },
           target: "Young Evelyn",
         },
+        {
+          timeRange: [4.029, 5.229],
+          rect: { x: 0.4312, y: 0.0073, w: 0.0717, h: 0.1188 },
+          target: "Bagle",
+        },
       ],
     },
   ],
@@ -89,7 +119,7 @@ const NODE_LIBRARY = new Map([
         {
           timeRange: [1.0, 1.6],
           rect: { x: 0.4, y: 0.35, w: 0.24, h: 0.3 },
-          target: "Young Evelyn",
+          target: "Bagle",
         },
       ],
     },
@@ -202,6 +232,186 @@ const NODE_LIBRARY = new Map([
       appearance: { opacity: 0.3 },
     },
   ],
+  [
+    "Ghost 13",
+    {
+      id: "Ghost 13",
+      label: "Ghost 13",
+      decorative: true,
+      appearance: { opacity: 0.26 },
+    },
+  ],
+  [
+    "Ghost 14",
+    {
+      id: "Ghost 14",
+      label: "Ghost 14",
+      decorative: true,
+      appearance: { opacity: 0.28 },
+    },
+  ],
+  [
+    "Ghost 15",
+    {
+      id: "Ghost 15",
+      label: "Ghost 15",
+      decorative: true,
+      appearance: { opacity: 0.24 },
+    },
+  ],
+  [
+    "Ghost 16",
+    {
+      id: "Ghost 16",
+      label: "Ghost 16",
+      decorative: true,
+      appearance: { opacity: 0.32 },
+    },
+  ],
+  [
+    "Ghost 17",
+    {
+      id: "Ghost 17",
+      label: "Ghost 17",
+      decorative: true,
+      appearance: { opacity: 0.27 },
+    },
+  ],
+  [
+    "Ghost 18",
+    {
+      id: "Ghost 18",
+      label: "Ghost 18",
+      decorative: true,
+      appearance: { opacity: 0.29 },
+    },
+  ],
+  [
+    "Ghost 19",
+    {
+      id: "Ghost 19",
+      label: "Ghost 19",
+      decorative: true,
+      appearance: { opacity: 0.25 },
+    },
+  ],
+  [
+    "Ghost 20",
+    {
+      id: "Ghost 20",
+      label: "Ghost 20",
+      decorative: true,
+      appearance: { opacity: 0.31 },
+    },
+  ],
+  [
+    "Ghost 21",
+    {
+      id: "Ghost 21",
+      label: "Ghost 21",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 22",
+    {
+      id: "Ghost 22",
+      label: "Ghost 22",
+      decorative: true,
+      appearance: { opacity: 0.28 },
+    },
+  ],
+  [
+    "Ghost 23",
+    {
+      id: "Ghost 23",
+      label: "Ghost 23",
+      decorative: true,
+      appearance: { opacity: 0.27 },
+    },
+  ],
+  [
+    "Ghost 24",
+    {
+      id: "Ghost 24",
+      label: "Ghost 24",
+      decorative: true,
+      appearance: { opacity: 0.29 },
+    },
+  ],
+  [
+    "Ghost 25",
+    {
+      id: "Ghost 25",
+      label: "Ghost 25",
+      decorative: true,
+      appearance: { opacity: 0.26 },
+    },
+  ],
+  [
+    "Ghost 26",
+    {
+      id: "Ghost 26",
+      label: "Ghost 26",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 27",
+    {
+      id: "Ghost 27",
+      label: "Ghost 27",
+      decorative: true,
+      appearance: { opacity: 0.27 },
+    },
+  ],
+  [
+    "Ghost 28",
+    {
+      id: "Ghost 28",
+      label: "Ghost 28",
+      decorative: true,
+      appearance: { opacity: 0.24 },
+    },
+  ],
+  [
+    "Ghost 29",
+    {
+      id: "Ghost 29",
+      label: "Ghost 29",
+      decorative: true,
+      appearance: { opacity: 0.25 },
+    },
+  ],
+  [
+    "Ghost 30",
+    {
+      id: "Ghost 30",
+      label: "Ghost 30",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 31",
+    {
+      id: "Ghost 31",
+      label: "Ghost 31",
+      decorative: true,
+      appearance: { opacity: 0.28 },
+    },
+  ],
+  [
+    "Ghost 32",
+    {
+      id: "Ghost 32",
+      label: "Ghost 32",
+      decorative: true,
+      appearance: { opacity: 0.26 },
+    },
+  ],
 ]);
 
 const INITIAL_NODE_IDS = [
@@ -223,6 +433,26 @@ const INITIAL_NODE_IDS = [
   "Ghost 10",
   "Ghost 11",
   "Ghost 12",
+  "Ghost 13",
+  "Ghost 14",
+  "Ghost 15",
+  "Ghost 16",
+  "Ghost 17",
+  "Ghost 18",
+  "Ghost 19",
+  "Ghost 20",
+  "Ghost 21",
+  "Ghost 22",
+  "Ghost 23",
+  "Ghost 24",
+  "Ghost 25",
+  "Ghost 26",
+  "Ghost 27",
+  "Ghost 28",
+  "Ghost 29",
+  "Ghost 30",
+  "Ghost 31",
+  "Ghost 32",
 ];
 
 const CELEBRATION_VIDEO_SRC = "videos/I love you_speech.mp4";
@@ -251,14 +481,7 @@ const nodes = INITIAL_NODE_IDS.map(id =>
   cloneNodeConfig(NODE_LIBRARY.get(id) ?? { id })
 );
 
-const links = [
-  { source: "Young Evelyn", target: "Bagle" },
-  { source: "Young Evelyn", target: "IRS Office" },
-  { source: "Young Evelyn", target: "Actor" },
-  { source: "Bagle", target: "Sign Spinner" },
-  { source: "Actor", target: "Singer" },
-  { source: "IRS Office", target: "Singer" },
-];
+const links = [];
 
 const visitedInteractiveNodes = new Set();
 let celebrationTriggered = false;
@@ -271,6 +494,14 @@ const lensSvg = d3.select(".scene-container svg");
 const backgroundSvg = d3.select(".background-network");
 const pulseRings = Array.from(document.querySelectorAll(".pulse-ring"));
 const PULSE_RING_DEFAULT_SCALES = [0.6, 0.75, 0.9];
+const BODY_LOCK_CLASS = "body-scroll-locked";
+const SCROLL_GHOST_HEIGHT_VAR = "--scroll-ghost-height";
+const VIRTUAL_SCROLL_MULTIPLIER = 1;
+const TICK_AUDIO_SRC = "audios/tick.wav";
+const TICK_VOLUME = 0.8;
+const SCROLL_TICK_INTERVAL = 90;
+const CLICK_TICK_INTERVAL = 60;
+const SCROLL_DELTA_THRESHOLD = 2;
 
 const celebrationOverlay = document.getElementById("celebration");
 const celebrationVideo = document.getElementById("celebrationVideo");
@@ -284,31 +515,53 @@ let hasSeededNodes = false;
 let sceneContainerLocked = false;
 const RADIAL_PADDING = 40;
 const MIN_RADIAL_RADIUS = 120;
+let audioContext = null;
+let tickBuffer = null;
+let tickBufferPromise = null;
+const tickThrottleMap = new Map();
 
 backgroundSvg.attr("preserveAspectRatio", "xMidYMid meet");
 
-const backgroundLinkGroup = backgroundSvg
+const backgroundViewport = backgroundSvg.append("g").attr("class", "background-viewport");
+
+const backgroundLinkGroup = backgroundViewport
   .append("g")
   .attr("class", "background-links")
   .attr("stroke-linecap", "round");
 let backgroundLink = backgroundLinkGroup.selectAll("line");
 
-const backgroundNodeGroup = backgroundSvg
+const backgroundNodeGroup = backgroundViewport
   .append("g")
   .attr("class", "background-nodes");
 let backgroundNode = backgroundNodeGroup.selectAll("circle");
 
-const linkGroup = lensSvg
+const lensViewport = lensSvg.append("g").attr("class", "lens-viewport");
+
+const linkGroup = lensViewport
   .append("g")
   .attr("class", "lens-links")
   .attr("stroke-linecap", "round");
 let link = linkGroup.selectAll("line");
 
-const nodeGroup = lensSvg.append("g");
+const nodeGroup = lensViewport.append("g");
 let node = nodeGroup.selectAll("circle");
 
-const labelGroup = lensSvg.append("g");
+const labelGroup = lensViewport.append("g");
 let label = labelGroup.selectAll("text");
+
+let currentZoomTransform = d3.zoomIdentity;
+
+const zoomBehavior = d3
+  .zoom()
+  .scaleExtent([0.6, 3])
+  .on("zoom", event => {
+    currentZoomTransform = event.transform;
+    lensViewport.attr("transform", currentZoomTransform);
+    backgroundViewport.attr("transform", currentZoomTransform);
+  });
+
+lensSvg.call(zoomBehavior);
+backgroundSvg.call(zoomBehavior);
 
 const simulation = d3
   .forceSimulation(nodes)
@@ -329,13 +582,234 @@ const simulation = d3
 function lockSceneContainer() {
   if (!sceneContainer || sceneContainerLocked) return;
   sceneContainer.classList.add("scene-container--locked");
+  if (document.body) {
+    document.body.classList.add(BODY_LOCK_CLASS);
+  }
   sceneContainerLocked = true;
 }
 
 function unlockSceneContainer() {
   if (!sceneContainer || !sceneContainerLocked) return;
   sceneContainer.classList.remove("scene-container--locked");
+  if (document.body) {
+    document.body.classList.remove(BODY_LOCK_CLASS);
+  }
   sceneContainerLocked = false;
+}
+
+function enableScrollPlayback(ghostHeight) {
+  virtualScrollHeight = ghostHeight;
+  virtualScrollMax = Math.max(1, virtualScrollHeight - lastWinH);
+  virtualScrollPos = 0;
+  scrollGhost.style.height = `${virtualScrollHeight}px`;
+  scrollGhost.style.setProperty(SCROLL_GHOST_HEIGHT_VAR, `${virtualScrollHeight}px`);
+  scrollGhost.classList.add("scroll-ghost--active");
+
+  if (!wheelHandler) {
+    wheelHandler = event => {
+      if (!popup.classList.contains("open") || !activeNode) return;
+      event.preventDefault();
+      updateVirtualScroll(event.deltaY);
+    };
+    window.addEventListener("wheel", wheelHandler, { passive: false });
+  }
+
+  if (!touchStartHandler) {
+    touchStartHandler = event => {
+      if (event.touches?.length === 1) {
+        lastTouchY = event.touches[0].clientY;
+      }
+    };
+    window.addEventListener("touchstart", touchStartHandler, { passive: false });
+  }
+
+  if (!touchMoveHandler) {
+    touchMoveHandler = event => {
+      if (event.touches?.length !== 1 || lastTouchY == null) return;
+      const currentY = event.touches[0].clientY;
+      const delta = lastTouchY - currentY;
+      if (delta !== 0) {
+        event.preventDefault();
+        updateVirtualScroll(delta);
+      }
+      lastTouchY = currentY;
+    };
+    window.addEventListener("touchmove", touchMoveHandler, { passive: false });
+  }
+
+  requestAnimationFrame(() => {
+    virtualScrollPos = 0;
+    applyVirtualScroll();
+  });
+}
+
+function disableScrollPlayback() {
+  if (wheelHandler) {
+    window.removeEventListener("wheel", wheelHandler);
+    wheelHandler = null;
+  }
+  if (touchStartHandler) {
+    window.removeEventListener("touchstart", touchStartHandler);
+    touchStartHandler = null;
+  }
+  if (touchMoveHandler) {
+    window.removeEventListener("touchmove", touchMoveHandler);
+    touchMoveHandler = null;
+  }
+  lastTouchY = null;
+  virtualScrollPos = 0;
+  virtualScrollMax = 0;
+  virtualScrollHeight = 0;
+  scrollGhost.classList.remove("scroll-ghost--active");
+  scrollGhost.style.height = "0px";
+  scrollGhost.style.removeProperty(SCROLL_GHOST_HEIGHT_VAR);
+}
+
+function updateVirtualScroll(delta) {
+  if (!activeNode || !Number.isFinite(delta) || virtualScrollMax <= 0) return;
+  const adjustedDelta = delta * VIRTUAL_SCROLL_MULTIPLIER;
+  if (adjustedDelta === 0) return;
+  const next = Math.max(
+    0,
+    Math.min(virtualScrollPos + adjustedDelta, virtualScrollMax)
+  );
+  if (Math.abs(next - virtualScrollPos) < 0.0001) return;
+  virtualScrollPos = next;
+  triggerScrollFeedback(adjustedDelta);
+  applyVirtualScroll();
+}
+
+function applyVirtualScroll() {
+  if (!activeNode) return;
+  const duration = getVideoDuration(activeNode, popupVideo);
+  const safeDuration = Math.max(duration, 0);
+  const progress = virtualScrollMax > 0 ? virtualScrollPos / virtualScrollMax : 0;
+  const targetTime =
+    safeDuration > 0
+      ? Math.min(progress * safeDuration, Math.max(safeDuration - 0.001, 0))
+      : 0;
+  if (!Number.isNaN(targetTime)) {
+    popupVideo.currentTime = targetTime;
+  }
+  updateHotspotsVisibility(activeNode, popupVideo);
+}
+
+function refreshVirtualScrollBounds() {
+  if (!activeNode || !popup.classList.contains("open")) return;
+  if (!virtualScrollHeight) return;
+  const ratio =
+    virtualScrollMax > 0 ? Math.max(0, Math.min(virtualScrollPos / virtualScrollMax, 1)) : 0;
+  virtualScrollHeight = Math.max(window.innerHeight * 2, 1600);
+  virtualScrollMax = Math.max(1, virtualScrollHeight - lastWinH);
+  virtualScrollPos = Math.min(ratio * virtualScrollMax, virtualScrollMax);
+  scrollGhost.style.height = `${virtualScrollHeight}px`;
+  scrollGhost.style.setProperty(SCROLL_GHOST_HEIGHT_VAR, `${virtualScrollHeight}px`);
+  applyVirtualScroll();
+}
+
+function ensureAudioContext() {
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtx) return null;
+  if (!audioContext) {
+    audioContext = new AudioCtx();
+  }
+  if (audioContext.state === "suspended") {
+    audioContext.resume().catch(() => {});
+  }
+  return audioContext;
+}
+
+function loadTickBuffer() {
+  if (tickBuffer) return Promise.resolve(tickBuffer);
+  if (tickBufferPromise) return tickBufferPromise;
+  const ctx = ensureAudioContext();
+  if (!ctx) return Promise.resolve(null);
+  tickBufferPromise = fetch(TICK_AUDIO_SRC)
+    .then(response => response.arrayBuffer())
+    .then(data => ctx.decodeAudioData(data))
+    .then(buffer => {
+      tickBuffer = buffer;
+      return tickBuffer;
+    })
+    .catch(error => {
+      console.warn("[Audio] Failed to load tick sample:", error);
+      return null;
+    })
+    .finally(() => {
+      tickBufferPromise = null;
+    });
+  return tickBufferPromise;
+}
+
+function shouldThrottleTick(key, interval) {
+  if (!interval) return false;
+  const now = performance.now();
+  const last = tickThrottleMap.get(key) ?? 0;
+  if (now - last < interval) return true;
+  tickThrottleMap.set(key, now);
+  return false;
+}
+
+function triggerVibration(duration = 10) {
+  try {
+    if (navigator?.vibrate) {
+      navigator.vibrate(duration);
+    }
+  } catch {
+    // ignore unsupported vibration errors
+  }
+}
+
+function playTick({ playbackRate = 1, volume = TICK_VOLUME, throttleKey, throttleMs, skipIfLoading = false } = {}) {
+  if (throttleKey && throttleMs && shouldThrottleTick(throttleKey, throttleMs)) {
+    return;
+  }
+  const ctx = ensureAudioContext();
+  if (!ctx) return;
+
+  const emit = buffer => {
+    if (!buffer) return;
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    source.playbackRate.value = playbackRate;
+    const gain = ctx.createGain();
+    gain.gain.value = volume;
+    source.connect(gain).connect(ctx.destination);
+    source.start(0);
+  };
+
+  if (tickBuffer) {
+    emit(tickBuffer);
+    return;
+  }
+  if (skipIfLoading) return;
+  loadTickBuffer().then(buffer => {
+    if (buffer) {
+      emit(buffer);
+    }
+  });
+}
+
+function triggerClickFeedback() {
+  playTick({ playbackRate: 1, throttleKey: "click", throttleMs: CLICK_TICK_INTERVAL, skipIfLoading: false });
+  triggerVibration(10);
+}
+
+function triggerScrollFeedback(delta) {
+  if (!Number.isFinite(delta)) return;
+  const magnitude = Math.abs(delta);
+  if (magnitude < SCROLL_DELTA_THRESHOLD) return;
+  const normalized = Math.min(1, magnitude / 180);
+  const playbackRate = 0.8 + normalized * 0.5;
+  playTick({
+    playbackRate,
+    throttleKey: "scroll",
+    throttleMs: SCROLL_TICK_INTERVAL,
+    skipIfLoading: false,
+  });
+  if (normalized > 0.45) {
+    triggerVibration(8);
+  }
 }
 
 function getNodeId(nodeRef) {
@@ -378,7 +852,7 @@ function refreshGraph() {
     .data(nodes, d => d.id)
     .join("circle")
     .attr("class", d => (d.decorative ? "node node--decorative" : "node"))
-    .attr("r", d => (d.decorative ? 4.5 : 6))
+    .attr("r", d => (d.decorative ? 4.8 : 6))
     .attr("aria-hidden", d => (d.decorative ? "true" : null))
     .style("opacity", d => {
       if (!d.decorative) return null;
@@ -391,6 +865,7 @@ function refreshGraph() {
     .on("click", (event, d) => {
       if (d.decorative) return;
       event.stopPropagation();
+      triggerClickFeedback();
       showPopupForNode(d);
     })
     .call(drag(simulation));
@@ -466,20 +941,23 @@ const hotspotLayer = document.getElementById("hotspotLayer");
 const scrollGhost = document.getElementById("scrollGhost");
 
 let activeNode = null;
-let scrollHandler = null;
 let metadataHandler = null;
 let inspectorOn = false;
 let dragStart = null;
 let draftBox = null;
 let scrollRestoration = 0;
+let wheelHandler = null;
+let touchStartHandler = null;
+let touchMoveHandler = null;
+let lastTouchY = null;
+let virtualScrollPos = 0;
+let virtualScrollMax = 0;
+let virtualScrollHeight = 0;
 let lastWinH = window.innerHeight;
 const frameStep = 0.04;
 
 function resetMediaState() {
-  if (scrollHandler) {
-    window.removeEventListener("scroll", scrollHandler);
-    scrollHandler = null;
-  }
+  disableScrollPlayback();
   if (metadataHandler) {
     popupVideo.removeEventListener("loadedmetadata", metadataHandler);
     metadataHandler = null;
@@ -496,7 +974,6 @@ function resetMediaState() {
     hotspotLayer.style.pointerEvents = inspectorOn ? "auto" : "none";
     hotspotLayer.classList.toggle("inspector-active", inspectorOn);
   }
-  scrollGhost.style.height = "0px";
 }
 
 function getVideoDuration(node, vid) {
@@ -520,7 +997,7 @@ function showPopupForNode(nodeData) {
 
   if (nodeData.video && nodeData.video.src) {
     const ghostHeight = Math.max(window.innerHeight * 2, 1600);
-    scrollGhost.style.height = `${ghostHeight}px`;
+    enableScrollPlayback(ghostHeight);
     window.scrollTo({ top: 0 });
 
     hotspotLayer.style.display = "block";
@@ -536,34 +1013,6 @@ function showPopupForNode(nodeData) {
     popupVideo.src = nodeData.video.src;
     popupVideo.style.display = "block";
     popupVideo.pause();
-
-    let tickingScroll = false;
-    const onScroll = () => {
-      if (!popup.classList.contains("open")) return;
-      if (tickingScroll) return;
-      tickingScroll = true;
-      requestAnimationFrame(() => {
-        const doc = document.documentElement;
-        const maxScroll = Math.max(1, doc.scrollHeight - lastWinH);
-        const scrollTop = window.scrollY || doc.scrollTop || 0;
-        const progress = maxScroll > 0 ? scrollTop / maxScroll : 0;
-        const duration = getVideoDuration(nodeData, popupVideo);
-        const safeDuration = Math.max(duration, 0);
-        const targetTime =
-          safeDuration > 0
-            ? Math.min(progress * safeDuration, Math.max(safeDuration - 0.001, 0))
-            : 0;
-        if (!Number.isNaN(targetTime)) {
-          popupVideo.currentTime = targetTime;
-        }
-        updateHotspotsVisibility(nodeData, popupVideo);
-        tickingScroll = false;
-      });
-    };
-
-    scrollHandler = onScroll;
-    window.addEventListener("scroll", onScroll, { passive: true });
-    requestAnimationFrame(onScroll);
   } else if (nodeData.img) {
     popupImg.src = nodeData.img;
     popupImg.style.display = "block";
@@ -630,6 +1079,7 @@ function updateHotspotsVisibility(nodeData, vid) {
     hotspot.classList.toggle("hotspot--debug", inspectorOn);
     hotspot.addEventListener("click", event => {
       event.stopPropagation();
+      triggerClickFeedback();
       openInteractiveNode(h.target);
     });
     hotspotLayer.appendChild(hotspot);
@@ -678,6 +1128,14 @@ function nudgeVideo(delta) {
 }
 
 function syncScrollToVideo(time, duration) {
+  if (popup.classList.contains("open") && virtualScrollMax > 0) {
+    const ratio = duration > 0 ? time / duration : 0;
+    virtualScrollPos = Math.max(
+      0,
+      Math.min(ratio * virtualScrollMax, virtualScrollMax)
+    );
+    return;
+  }
   const doc = document.documentElement;
   const maxScroll = Math.max(1, doc.scrollHeight - lastWinH);
   const ratio = duration > 0 ? time / duration : 0;
@@ -1115,6 +1573,9 @@ function syncRadarToContainer() {
     .attr("width", window.innerWidth)
     .attr("height", window.innerHeight);
 
+  lensViewport.attr("transform", currentZoomTransform);
+  backgroundViewport.attr("transform", currentZoomTransform);
+
   if (!hasSeededNodes) {
     seedNodesRandomly(radius, centerX, centerY);
     hasSeededNodes = true;
@@ -1158,6 +1619,9 @@ function seedNodesRandomly(radius, centerX, centerY) {
 window.addEventListener("resize", () => {
   lastWinH = window.innerHeight;
   syncRadarToContainer();
+  if (virtualScrollHeight > 0) {
+    refreshVirtualScrollBounds();
+  }
   if (activeNode && popupVideo.style.display === "block") {
     requestAnimationFrame(() => updateHotspotsVisibility(activeNode, popupVideo));
   }

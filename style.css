@@ -27,6 +27,10 @@ body {
   position: relative;
 }
 
+body.body-scroll-locked {
+  overflow: hidden;
+}
+
 /* ======== bg ======== */
 .background-network {
   position: fixed;
@@ -302,11 +306,13 @@ text.label.label--decorative {
 .hotspot {
   position: absolute;
   cursor: pointer;
+  border: 1.5px solid rgba(63, 242, 255, 0.9);
+  background-color: rgba(63, 242, 255, 0.12);
 }
 
 .hotspot--debug {
-  outline: 1px dashed rgba(63, 242, 255, 0.6);
-  background: rgba(63, 242, 255, 0.1);
+  outline: 1px dashed rgba(63, 242, 255, 0.65);
+  background: rgba(63, 242, 255, 0.2);
 }
 
 .hotspot--draft {
@@ -326,6 +332,13 @@ text.label.label--decorative {
 #scrollGhost {
   width: 1px;
   height: 0;
+  pointer-events: none;
+}
+
+#scrollGhost::after {
+  content: "";
+  display: block;
+  height: var(--scroll-ghost-height, 0px);
 }
 /* ======== vedio popup 끝 ======== */
 
