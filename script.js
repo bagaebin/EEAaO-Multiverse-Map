@@ -212,18 +212,22 @@ const INITIAL_NODE_IDS = [
   "Singer",
   "Sign Spinner",
   "Ghost 1",
-  "Ghost 2",  
+  "Ghost 2",
   "Ghost 3",
   "Ghost 4",
   "Ghost 5",
   "Ghost 6",
   "Ghost 7",
-  "Ghost 8",  
+  "Ghost 8",
   "Ghost 9",
   "Ghost 10",
   "Ghost 11",
   "Ghost 12",
 ];
+
+const CELEBRATION_VIDEO_SRC = "videos/I love you_speech.mp4";
+const DONUT_ANIMATION_DURATION = 1000;
+const HEART_ANIMATION_DURATION = 2000;
 
 function cloneNodeConfig(config = {}) {
   return {
@@ -256,11 +260,23 @@ const links = [
   { source: "IRS Office", target: "Singer" },
 ];
 
+const visitedInteractiveNodes = new Set();
+let celebrationTriggered = false;
+let celebrationAnimating = false;
+let celebrationHoldingNodes = false;
+let celebrationAnimationToken = 0;
+
 const sceneContainer = document.querySelector(".scene-container");
 const lensSvg = d3.select(".scene-container svg");
 const backgroundSvg = d3.select(".background-network");
 const pulseRings = Array.from(document.querySelectorAll(".pulse-ring"));
 const PULSE_RING_DEFAULT_SCALES = [0.6, 0.75, 0.9];
+
+const celebrationOverlay = document.getElementById("celebration");
+const celebrationVideo = document.getElementById("celebrationVideo");
+const celebrationCloseBtn = document.getElementById("celebrationClose");
+const celebrationDismissBtn = document.getElementById("celebrationDismiss");
+const celebrationReplayBtn = document.getElementById("celebrationReplay");
 
 let width = 800;
 let height = 800;
@@ -559,6 +575,8 @@ function showPopupForNode(nodeData) {
     hotspotLayer.style.display = inspectorOn ? "block" : "none";
     hotspotLayer.style.pointerEvents = inspectorOn ? "auto" : "none";
   }
+
+  handleInteractiveNodeOpened(nodeData);
 }
 
 function hidePopup() {
@@ -697,6 +715,255 @@ function openInteractiveNode(targetId) {
   showPopupForNode(target);
 }
 
+function handleInteractiveNodeOpened(nodeData) {
+  if (!nodeData || nodeData.decorative) return;
+  visitedInteractiveNodes.add(nodeData.id);
+  maybeTriggerCelebration();
+}
+
+function getInteractiveNodeIds() {
+  return nodes.filter(n => !n.decorative).map(n => n.id);
+}
+
+function areAllInteractiveNodesOpened() {
+  const ids = getInteractiveNodeIds();
+  if (!ids.length) return false;
+  return ids.every(id => visitedInteractiveNodes.has(id));
+}
+
+function areInteractiveNodesFullyConnected() {
+  const ids = getInteractiveNodeIds();
+  if (!ids.length) return false;
+  const interactiveSet = new Set(ids);
+  const adjacency = new Map();
+  ids.forEach(id => adjacency.set(id, new Set()));
+
+  links.forEach(link => {
+    const source = getNodeId(link.source);
+    const target = getNodeId(link.target);
+    if (!interactiveSet.has(source) || !interactiveSet.has(target)) return;
+    adjacency.get(source).add(target);
+    adjacency.get(target).add(source);
+  });
+
+  const stack = [ids[0]];
+  const visited = new Set();
+  while (stack.length) {
+    const current = stack.pop();
+    if (visited.has(current)) continue;
+    visited.add(current);
+    adjacency.get(current).forEach(neighbor => {
+      if (!visited.has(neighbor)) {
+        stack.push(neighbor);
+      }
+    });
+  }
+
+  return visited.size === ids.length;
+}
+
+function maybeTriggerCelebration() {
+  if (celebrationTriggered || celebrationAnimating) return;
+  if (!areAllInteractiveNodesOpened()) return;
+  if (!areInteractiveNodesFullyConnected()) return;
+  celebrationTriggered = true;
+  startCelebrationSequence();
+}
+
+function startCelebrationSequence() {
+  celebrationAnimating = true;
+  hidePopup();
+  pauseSimulationForCelebration();
+  const runId = ++celebrationAnimationToken;
+  setCelebrationDismissEnabled(false);
+  openCelebrationOverlay();
+
+  const donutTargets = computeDonutTargets();
+  animateNodesToTargets(donutTargets, DONUT_ANIMATION_DURATION, runId, () => {
+    const heartTargets = computeHeartTargets();
+    animateNodesToTargets(heartTargets, HEART_ANIMATION_DURATION, runId, () => {
+      if (runId !== celebrationAnimationToken) return;
+      holdNodesAtFinalTargets();
+      celebrationAnimating = false;
+      setCelebrationDismissEnabled(true);
+    });
+  });
+}
+
+function setCelebrationDismissEnabled(enabled) {
+  [celebrationCloseBtn, celebrationDismissBtn].forEach(btn => {
+    if (!btn) return;
+    btn.disabled = !enabled;
+  });
+}
+
+function openCelebrationOverlay() {
+  if (!celebrationOverlay) return;
+  celebrationOverlay.classList.add("open");
+  celebrationOverlay.setAttribute("aria-hidden", "false");
+  lockSceneContainer();
+  if (celebrationVideo) {
+    if (CELEBRATION_VIDEO_SRC && celebrationVideo.src !== CELEBRATION_VIDEO_SRC) {
+      celebrationVideo.src = CELEBRATION_VIDEO_SRC;
+      celebrationVideo.load();
+    }
+    celebrationVideo.currentTime = 0;
+    celebrationVideo.play().catch(() => {});
+  }
+}
+
+function replayCelebrationVideo() {
+  if (!celebrationVideo) return;
+  celebrationVideo.currentTime = 0;
+  celebrationVideo.play().catch(() => {});
+}
+
+function closeCelebrationOverlay() {
+  if (!celebrationOverlay || !celebrationOverlay.classList.contains("open")) return;
+  celebrationOverlay.classList.remove("open");
+  celebrationOverlay.setAttribute("aria-hidden", "true");
+  celebrationAnimationToken += 1;
+  celebrationAnimating = false;
+  setCelebrationDismissEnabled(true);
+  if (celebrationVideo) {
+    celebrationVideo.pause();
+  }
+  unlockSceneContainer();
+  releaseNodesAfterCelebration();
+  simulation.alpha(0.6).restart();
+}
+
+function pauseSimulationForCelebration() {
+  simulation.stop();
+  nodes.forEach(nodeItem => {
+    nodeItem.vx = 0;
+    nodeItem.vy = 0;
+  });
+}
+
+function releaseNodesAfterCelebration() {
+  if (!celebrationHoldingNodes) return;
+  nodes.forEach(nodeItem => {
+    if (nodeItem.decorative) return;
+    nodeItem.fx = null;
+    nodeItem.fy = null;
+  });
+  celebrationHoldingNodes = false;
+  simulation.nodes(nodes);
+}
+
+function holdNodesAtFinalTargets() {
+  nodes.forEach(nodeItem => {
+    if (nodeItem.decorative) return;
+    nodeItem.fx = nodeItem.x;
+    nodeItem.fy = nodeItem.y;
+  });
+  celebrationHoldingNodes = true;
+  ticked();
+}
+
+function computeDonutTargets() {
+  const interactive = nodes.filter(n => !n.decorative);
+  const count = interactive.length;
+  if (!count) return new Map();
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const minRadius = Math.min(width, height) / 3;
+  const maxRadius = Math.min(width, height) / 2.2;
+  const radiusMid = (minRadius + maxRadius) / 2;
+  const amplitude = Math.max(12, (maxRadius - minRadius) / 2);
+  const targets = new Map();
+
+  interactive.forEach((nodeItem, index) => {
+    const angle = (index / count) * Math.PI * 2;
+    const radial = radiusMid + Math.sin(angle * 3) * (amplitude * 0.25);
+    const x = centerX + Math.cos(angle) * radial;
+    const y = centerY + Math.sin(angle) * radial;
+    targets.set(nodeItem.id, { x, y });
+  });
+
+  return targets;
+}
+
+function computeHeartTargets() {
+  const interactive = nodes.filter(n => !n.decorative);
+  const count = interactive.length;
+  if (!count) return new Map();
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const scale = Math.min(width, height) / 3.2;
+  const targets = new Map();
+
+  interactive.forEach((nodeItem, index) => {
+    const t = (index / count) * Math.PI * 2;
+    const xNorm = Math.pow(Math.sin(t), 3);
+    const yNorm =
+      0.8125 * Math.cos(t) -
+      0.3125 * Math.cos(2 * t) -
+      0.125 * Math.cos(3 * t) -
+      0.0625 * Math.cos(4 * t);
+    const x = centerX + xNorm * scale;
+    const y = centerY - yNorm * scale;
+    targets.set(nodeItem.id, { x, y });
+  });
+
+  return targets;
+}
+
+function animateNodesToTargets(targets, duration, runId, onComplete) {
+  if (!(targets instanceof Map) || !targets.size) {
+    ticked();
+    if (typeof onComplete === "function") onComplete();
+    return;
+  }
+
+  const startPositions = new Map();
+  nodes.forEach(nodeItem => {
+    if (nodeItem.decorative) return;
+    const startX = Number.isFinite(nodeItem.x) ? nodeItem.x : width / 2;
+    const startY = Number.isFinite(nodeItem.y) ? nodeItem.y : height / 2;
+    startPositions.set(nodeItem.id, { x: startX, y: startY });
+  });
+
+  const startTime = performance.now();
+
+  function step(now) {
+    if (runId !== celebrationAnimationToken) return;
+    const elapsed = now - startTime;
+    const progress = Math.min(1, duration > 0 ? elapsed / duration : 1);
+    const eased = easeInOutCubic(progress);
+
+    nodes.forEach(nodeItem => {
+      if (nodeItem.decorative) return;
+      const start = startPositions.get(nodeItem.id);
+      const target = targets.get(nodeItem.id);
+      if (!start || !target) return;
+      nodeItem.x = start.x + (target.x - start.x) * eased;
+      nodeItem.y = start.y + (target.y - start.y) * eased;
+    });
+
+    ticked();
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else if (typeof onComplete === "function") {
+      onComplete();
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+
+function easeInOutCubic(t) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+function isCelebrationOpen() {
+  return Boolean(
+    celebrationOverlay && celebrationOverlay.classList.contains("open")
+  );
+}
+
 if (hotspotLayer) {
   hotspotLayer.addEventListener("mousedown", event => {
     if (!inspectorOn || popupVideo.style.display === "none" || event.button !== 0) {
@@ -778,11 +1045,38 @@ window.addEventListener("mouseup", event => {
   dragStart = null;
 });
 
+if (celebrationCloseBtn) {
+  celebrationCloseBtn.addEventListener("click", () => {
+    closeCelebrationOverlay();
+  });
+}
+
+if (celebrationDismissBtn) {
+  celebrationDismissBtn.addEventListener("click", () => {
+    closeCelebrationOverlay();
+  });
+}
+
+if (celebrationReplayBtn) {
+  celebrationReplayBtn.addEventListener("click", () => {
+    replayCelebrationVideo();
+  });
+}
+
 document.addEventListener("keydown", event => {
   if (event.key === "Escape") {
-    hidePopup();
+    if (isCelebrationOpen()) {
+      event.preventDefault();
+      closeCelebrationOverlay();
+      return;
+    }
+    if (popup.classList.contains("open")) {
+      event.preventDefault();
+      hidePopup();
+    }
     return;
   }
+  if (isCelebrationOpen()) return;
   if (!popup.classList.contains("open")) return;
   if (event.key.toLowerCase() === "i") {
     event.preventDefault();

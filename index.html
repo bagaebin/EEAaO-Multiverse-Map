@@ -58,6 +58,17 @@
       <div id="hotspotLayer" aria-hidden="true"></div>
     </div>
   </div>
+  <div class="celebration" id="celebration" aria-hidden="true">
+    <div class="celebration__content" role="dialog" aria-modal="true" aria-labelledby="celebrationTitle">
+      <button class="celebration__close" id="celebrationClose" type="button" aria-label="축하 영상 닫기">✕</button>
+      <h2 id="celebrationTitle" class="celebration__title">All Universes Connected</h2>
+      <video id="celebrationVideo" playsinline preload="auto"></video>
+      <div class="celebration__actions">
+        <button id="celebrationReplay" type="button">다시 보기</button>
+        <button id="celebrationDismiss" type="button">닫기</button>
+      </div>
+    </div>
+  </div>
   <div id="scrollGhost" aria-hidden="true"></div>
   <script src="script.js"></script>
 </body>
