@@ -95,37 +95,109 @@ const NODE_LIBRARY = new Map([
     },
   ],
   [
-    "Everything Cultist",
+    "Ghost 1",
     {
-      id: "Everything Cultist",
-      label: "Everything Cultist",
-      video: { src: "videos/02_Bagle.mp4", duration: 5 },
-      hotspots: [],
-    },
-  ],
-  [
-    "Ambient Echo",
-    {
-      id: "Ambient Echo",
-      label: "Ambient Echo",
+      id: "Ghost 1",
+      label: "Ghost 1",
       decorative: true,
       appearance: { opacity: 0.28 },
     },
   ],
   [
-    "Prismatic Drift",
+    "Ghost 2",
     {
-      id: "Prismatic Drift",
-      label: "Prismatic Drift",
+      id: "Ghost 2",
+      label: "Ghost 2",
       decorative: true,
       appearance: { opacity: 0.34 },
     },
   ],
   [
-    "Signal Ghost",
+    "Ghost 3",
     {
-      id: "Signal Ghost",
-      label: "Signal Ghost",
+      id: "Ghost 3",
+      label: "Ghost 3",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 4",
+    {
+      id: "Ghost 4",
+      label: "Ghost 4",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 5",
+    {
+      id: "Ghost 5",
+      label: "Ghost 5",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 6",
+    {
+      id: "Ghost 6",
+      label: "Ghost 6",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 7",
+    {
+      id: "Ghost 7",
+      label: "Ghost 7",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 8",
+    {
+      id: "Ghost 8",
+      label: "Ghost 8",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 9",
+    {
+      id: "Ghost 9",
+      label: "Ghost 9",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 10",
+    {
+      id: "Ghost 10",
+      label: "Ghost 10",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 11",
+    {
+      id: "Ghost 11",
+      label: "Ghost 11",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
+  [
+    "Ghost 12",
+    {
+      id: "Ghost 12",
+      label: "Ghost 12",
       decorative: true,
       appearance: { opacity: 0.3 },
     },
@@ -139,9 +211,18 @@ const INITIAL_NODE_IDS = [
   "IRS Office",
   "Singer",
   "Sign Spinner",
-  "Ambient Echo",
-  "Prismatic Drift",
-  "Signal Ghost",
+  "Ghost 1",
+  "Ghost 2",  
+  "Ghost 3",
+  "Ghost 4",
+  "Ghost 5",
+  "Ghost 6",
+  "Ghost 7",
+  "Ghost 8",  
+  "Ghost 9",
+  "Ghost 10",
+  "Ghost 11",
+  "Ghost 12",
 ];
 
 function cloneNodeConfig(config = {}) {
@@ -173,9 +254,6 @@ const links = [
   { source: "Bagle", target: "Sign Spinner" },
   { source: "Actor", target: "Singer" },
   { source: "IRS Office", target: "Singer" },
-  { source: "Ambient Echo", target: "Young Evelyn" },
-  { source: "Prismatic Drift", target: "Singer" },
-  { source: "Signal Ghost", target: "Bagle" },
 ];
 
 const sceneContainer = document.querySelector(".scene-container");
@@ -187,6 +265,7 @@ const PULSE_RING_DEFAULT_SCALES = [0.6, 0.75, 0.9];
 let width = 800;
 let height = 800;
 let hasSeededNodes = false;
+let sceneContainerLocked = false;
 const RADIAL_PADDING = 40;
 const MIN_RADIAL_RADIUS = 120;
 
@@ -230,6 +309,18 @@ const simulation = d3
       )
       .strength(0.08)
   );
+
+function lockSceneContainer() {
+  if (!sceneContainer || sceneContainerLocked) return;
+  sceneContainer.classList.add("scene-container--locked");
+  sceneContainerLocked = true;
+}
+
+function unlockSceneContainer() {
+  if (!sceneContainer || !sceneContainerLocked) return;
+  sceneContainer.classList.remove("scene-container--locked");
+  sceneContainerLocked = false;
+}
 
 function getNodeId(nodeRef) {
   return typeof nodeRef === "object" ? nodeRef.id : nodeRef;
@@ -409,6 +500,7 @@ function showPopupForNode(nodeData) {
   activeNode = nodeData;
   popup.classList.add("open");
   popup.setAttribute("aria-hidden", "false");
+  lockSceneContainer();
 
   if (nodeData.video && nodeData.video.src) {
     const ghostHeight = Math.max(window.innerHeight * 2, 1600);
@@ -474,6 +566,7 @@ function hidePopup() {
   resetMediaState();
   popup.classList.remove("open");
   popup.setAttribute("aria-hidden", "true");
+  unlockSceneContainer();
   if (typeof scrollRestoration === "number") {
     window.scrollTo({ top: scrollRestoration });
   }
