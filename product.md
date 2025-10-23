@@ -1,22 +1,22 @@
-# Product Brief
+# 제품 개요
 
-## Concept & Audience
-- **Experience goal**: Present a stylized multiverse radar inspired by *Everything Everywhere All at Once*, letting fans explore Evelyn’s alternate personas through an interactive network. 【F:index.html†L5-L25】【F:script.js†L1-L7】
-- **Target users**: Viewers familiar with the film who want a visual companion piece or exploratory artifact that highlights improbable life paths.
+## 콘셉트 및 대상
+- **경험 목표**: *에브리씽 에브리웨어 올 앳 원스(Everything Everywhere All at Once)*에서 영감을 받은 스타일화된 멀티버스 레이더를 제시하여, 팬들이 Evelyn의 대체 페르소나들을 인터랙티브 네트워크를 통해 탐험할 수 있도록 합니다. 【F:index.html†L5-L25】【F:script.js†L1-L7】
+- **타겟 사용자**: 영화에 익숙하며, 놀라운 삶의 경로들을 강조하는 시각적 동반 자료 혹은 탐험형 아카이브를 원하는 관람객.
 
-## Current Feature Set
-- **Multiverse map**: A force-directed node graph displays five personas (“Cook”, “Kung-Fu”, “Actor”, “Mom”, “Singer”) and their cross-universe connections. Nodes radiate within a circular radar while ambient links fill the background. 【F:script.js†L1-L87】
-- **Interactive exploration**: Users can drag personas to inspect relationships without breaking the layout, thanks to the live D3 simulation. 【F:script.js†L90-L138】
-- **Character spotlights**: Selecting a node opens a modal image viewer that surfaces artwork or stills for that persona; users close it via the ✕ icon or the Escape key. 【F:index.html†L52-L55】【F:script.js†L141-L155】
-- **Immersive styling**: Pulse rings, neon accents, and optional HUD chrome (currently disabled) reinforce the sci-fi monitoring metaphor. 【F:index.html†L23-L50】【F:style.css†L60-L205】
+## 현재 기능 구성
+- **멀티버스 지도**: force 지향 노드 그래프가 6개의 페르소나(“Young Evelyn”, “Bagle”, “Actor”, “IRS Office”, “Singer”, "Sign Spinner")와 그들의 다중 우주 간 연결을 보여줍니다. 노드들은 원형 레이더 내에 방사형으로 퍼지며, 배경에는 앰비언트 링크가 채워집니다.
+- **인터랙티브 탐험**: 사용자는 페르소나를 드래그하여 관계를 관찰할 수 있으며, D3 시뮬레이션이 레이아웃을 유지합니다. 【F:script.js†L90-L138】
+- **캐릭터 강조 보기**: 노드를 선택하면 해당 페르소나의 영상을 보여주는 모달 뷰어가 열립니다. 사용자는 ✕ 아이콘 또는 Escape 키로 닫을 수 있습니다. 【F:index.html†L52-L55】【F:script.js†L141-L155】
+- **몰입형 스타일링**: 펄스 링, 네온 강조, 선택적 HUD 크롬(현재는 비활성화됨)이 SF 감시 장치 메타포를 강화합니다. 【F:index.html†L23-L50】【F:style.css†L60-L205】
 
-## User Workflow
-1. **Launch** the page to see the animated radar with ambient network lines already running. 【F:index.html†L10-L25】【F:style.css†L20-L57】
-2. **Explore** by dragging personas around the radar; the simulation stabilizes them while preserving connections. 【F:script.js†L90-L138】
-3. **Inspect** a persona by clicking its node to open the modal, then dismiss via the close control or Escape key to continue exploring. 【F:index.html†L52-L55】【F:script.js†L141-L155】
-4. **Resize** the window if desired—the radar automatically rescales to keep the experience centered. 【F:script.js†L162-L229】
+## 사용자 워크플로우
+1. **페이지를 실행**하면 앰비언트 네트워크 라인이 동작 중인 애니메이션 레이더가 나타납니다. 【F:index.html†L10-L25】【F:style.css†L20-L57】
+2. **탐색**: 페르소나를 드래그하여 이동하면, 시뮬레이션이 연결을 유지한 채로 안정화합니다. 【F:script.js†L90-L138】
+3. **확인**: 노드를 클릭하여 모달을 열고 해당 페르소나를 확인한 뒤, 닫기 버튼 또는 Escape 키로 종료하고 탐색을 이어갑니다. 【F:index.html†L52-L55】【F:script.js†L141-L155】
+4. **창 크기 조정**: 필요시 창을 리사이즈하면 레이더가 자동으로 재스케일되어 중심을 유지합니다. 【F:script.js†L162-L229】
 
-## Known Gaps & Opportunities
-- Several node image paths still include placeholder notes (e.g., `002(need edited).png`), signalling art assets that require finalization before launch. 【F:script.js†L2-L7】
-- HUD overlays are commented out, offering room to add game-like objectives or probabilities once mechanics are defined. 【F:index.html†L28-L50】
-- Accessibility enhancements—focus trapping, descriptive alt text, and keyboard navigation—remain to be implemented for broader usability. 【F:index.html†L54-L55】【F:script.js†L141-L155】
+## 알려진 공백 및 기회
+- 일부 노드 이미지 경로에 `002(need edited).png`와 같은 플레이스홀더 메모가 남아 있으며, 이는 출시 전 아트 에셋의 최종화가 필요함을 의미합니다. 【F:script.js†L2-L7】
+- HUD 오버레이는 주석 처리되어 있으며, 향후 게임 요소나 확률 시스템이 정의되면 기능 확장 가능성이 있습니다. 【F:index.html†L28-L50】
+- 접근성 향상—포커스 트래핑, 설명적 대체 텍스트, 키보드 내비게이션—은 아직 구현되지 않았으며, 향후 보편적 사용성을 위해 개선이 필요합니다. 【F:index.html†L54-L55】【F:script.js†L141-L155】

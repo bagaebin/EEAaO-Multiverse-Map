@@ -1,21 +1,21 @@
-# Technology Notes
+# 기술 노트
 
-## Core Stack
-- **HTML5 + vanilla JavaScript**: The experience is delivered as a standalone static page with inline DOM elements defined in `index.html` and behavior wired through `script.js`. No framework or bundler is used. 【F:index.html†L1-L57】【F:script.js†L1-L229】
-- **CSS3 styling**: A single stylesheet governs theming, layout, and animation via custom properties, gradients, and keyframes. 【F:style.css†L1-L237】
+## 핵심 스택
+- **HTML5 + 바닐라 JavaScript**: 이 경험은 `index.html`에 정의된 DOM 요소들과 `script.js`를 통한 동작 연결로 구성된 독립적인 정적 페이지로 제공됩니다. 프레임워크나 번들러는 사용되지 않습니다. 【F:index.html†L1-L57】【F:script.js†L1-L229】
+- **CSS3 스타일링**: 하나의 스타일시트가 테마, 레이아웃, 애니메이션을 커스텀 속성, 그라디언트, 키프레임을 통해 제어합니다. 【F:style.css†L1-L237】
 
-## External Libraries & Assets
-- **D3.js v7**: Pulled directly from the official CDN to power the force-directed graph simulation, drag interactions, and selections. 【F:index.html†L6-L7】【F:script.js†L32-L138】
-- **Google Fonts (Orbitron)**: Imported at runtime to reinforce the sci-fi interface aesthetic. 【F:style.css†L1-L4】
-- **Image assets**: Each node references an image under `images/`, so the runtime requires corresponding files to exist and be reachable relative to the HTML root. 【F:script.js†L1-L7】
+## 외부 라이브러리 및 에셋
+- **D3.js v7**: 공식 CDN에서 직접 불러오며, force 지향 그래프 시뮬레이션, 드래그 상호작용, 셀렉션을 구현합니다. 【F:index.html†L6-L7】【F:script.js†L32-L138】
+- **Google Fonts (Orbitron)**: SF 인터페이스 미학을 강화하기 위해 런타임에 불러옵니다. 【F:style.css†L1-L4】
+- **비디오 에셋**: 각 노드는 `vidoes/` 경로 아래의 영상를 참조하므로, HTML 루트 기준 해당 파일이 존재하고 접근 가능해야 합니다. 【F:script.js†L1-L7】
 
-## Patterns & Practices
-- **Data-driven rendering**: Nodes and links are defined as JavaScript data structures, then bound to SVG elements through D3’s `data` join pattern to keep DOM in sync with simulation updates. 【F:script.js†L32-L113】
-- **Force simulation composition**: Multiple D3 forces are combined—including radial centering—to constrain layout within a circular radar, giving deterministic structure to an otherwise organic graph. 【F:script.js†L32-L45】【F:script.js†L193-L197】
-- **Responsive recalibration**: Window resize events trigger recomputation of viewboxes, force centers, and decorative ring sizing so the visualization scales with viewport changes. 【F:script.js†L162-L214】【F:script.js†L227-L229】
-- **Progressive HUD**: Additional HUD markup and styling exist but remain commented out until the interactive game system is enabled, signalling planned extensibility. 【F:index.html†L28-L50】【F:style.css†L60-L123】
+## 패턴 및 관행
+- **데이터 기반 렌더링**: 노드와 링크는 JavaScript 데이터 구조로 정의되고, D3의 `data` 조인 패턴을 통해 SVG 요소에 바인딩되어 DOM이 시뮬레이션 업데이트와 동기화됩니다. 【F:script.js†L32-L113】
+- **Force 시뮬레이션 구성**: 여러 D3 force가 조합되어 방사형 중심 배치를 포함하며, 원형 레이더 내에서 레이아웃이 구조화되도록 합니다. 【F:script.js†L32-L45】【F:script.js†L193-L197】
+- **반응형 재보정**: 창 크기 변경 이벤트가 뷰박스, force 중심, 장식 링 크기 등을 재계산하게 하여 시각화가 뷰포트 변화에 맞게 조정됩니다. 【F:script.js†L162-L214】【F:script.js†L227-L229】
+- **점진적 HUD**: HUD 마크업 및 스타일링이 추가로 존재하나, 인터랙티브 게임 시스템이 활성화되기 전까지는 주석 처리되어 있으며, 향후 확장 가능성을 시사합니다. 【F:index.html†L28-L50】【F:style.css†L60-L123】
 
-## Operational Considerations
-- **Static hosting**: Because assets are fully static, the project can be hosted from any static file server or CDN without build steps. 【F:index.html†L1-L57】【F:script.js†L1-L229】
-- **Viewport-bound simulation**: The force layout depends on browser APIs like `getBoundingClientRect` and `window.innerWidth`, making the experience inherently browser-based and sensitive to rendering container dimensions. 【F:script.js†L165-L185】
-- **Modal accessibility**: Popups are dismissed via both UI controls and keyboard escape handling, but there are no ARIA attributes or focus management yet—important for future accessibility work. 【F:script.js†L141-L155】【F:index.html†L52-L55】
+## 운영 고려사항
+- **정적 호스팅**: 모든 에셋이 정적이므로, 어떤 정적 파일 서버나 CDN에서도 빌드 단계 없이 호스팅할 수 있습니다. 【F:index.html†L1-L57】【F:script.js†L1-L229】
+- **뷰포트 기반 시뮬레이션**: force 레이아웃은 `getBoundingClientRect` 및 `window.innerWidth`와 같은 브라우저 API에 의존하므로, 브라우저 기반이며 렌더링 컨테이너 크기에 민감합니다. 【F:script.js†L165-L185】
+- **모달 접근성**: 팝업은 UI 제어 및 키보드 Escape 핸들링으로 닫을 수 있지만, 아직 ARIA 속성이나 포커스 관리가 없어 향후 접근성 작업이 필요합니다. 【F:script.js†L141-L155】【F:index.html†L52-L55】

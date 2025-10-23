@@ -1,18 +1,18 @@
-# Architecture Overview
+# 아키텍처 개요
 
-## Application Composition
-- **Static single-page app**: `index.html` loads the visualization shell, links the stylesheet, and imports D3.js v7 from a CDN before bootstrapping `script.js` for behavior. 【F:index.html†L1-L57】
-- **Dual-SVG layout**: the page defines a full-screen background `<svg>` for ambient network lines and a foreground `<svg>` inside the circular `.scene-container` that users interact with. The foreground also declares shared SVG filters used for glow effects. 【F:index.html†L10-L25】
-- **Modal assets**: a hidden `.popup` container hosts images associated with each node and is toggled by script-driven events. 【F:index.html†L52-L55】
+## 애플리케이션 구성
+- **정적 단일 페이지 앱**: `index.html`은 시각화 셸을 불러오며, 스타일시트를 연결하고 D3.js v7을 CDN에서 불러온 후 `script.js`를 부트스트랩하여 동작을 시작합니다. 【F:index.html†L1-L57】
+- **이중 SVG 레이아웃**: 페이지는 전체 화면 배경용 `<svg>`와, 사용자가 상호작용하는 원형 `.scene-container` 안의 전경 `<svg>`를 정의합니다. 전경 SVG는 글로우 효과에 사용되는 공유 SVG 필터들도 선언합니다. 【F:index.html†L10-L25】
+- **모달 에셋**: 숨겨진 `.popup` 컨테이너는 각 노드에 연관된 이미지를 보유하며, 스크립트 기반 이벤트로 토글됩니다. 【F:index.html†L52-L55】
 
-## Data & Force Simulation Flow
-- **Universe graph model**: `script.js` declares parallel `nodes` and `links` arrays describing personas and their multiversal relationships. Each node references an image under `images/`. 【F:script.js†L1-L15】
-- **D3 force layout**: a `d3.forceSimulation` orchestrates `forceLink`, `forceManyBody`, `forceCenter`, and `forceRadial` behaviors to position nodes in a radial radar footprint while maintaining the network topology. 【F:script.js†L24-L45】【F:script.js†L193-L197】
-- **Layered rendering**: background and foreground SVG groups mirror the same data. Background elements give a soft ambient network, while the lens layer adds interactive circles and labels. 【F:script.js†L48-L87】
-- **Interactive drag**: a reusable `drag` helper wires D3 drag events so users can reposition nodes; physics settles positions after the drag ends. 【F:script.js†L116-L138】
-- **Popup workflow**: clicking a node invokes `showPopup`, swapping the popup image source and revealing the modal; `hidePopup` and the `Escape` key dismiss it. 【F:script.js†L141-L155】
+## 데이터 & Force 시뮬레이션 흐름
+- **유니버스 그래프 모델**: `script.js`는 페르소나와 다중 우주 관계를 설명하는 `nodes` 및 `links` 배열을 병렬로 선언합니다. 각 노드는 `vidoes/` 경로 아래의 이미지를 참조합니다. 【F:script.js†L1-L15】
+- **D3 force 레이아웃**: `d3.forceSimulation`은 `forceLink`, `forceManyBody`, `forceCenter`, `forceRadial` 동작을 조합하여 노드들을 방사형 레이더 구조 내에 배치하면서 네트워크 토폴로지를 유지합니다. 【F:script.js†L24-L45】【F:script.js†L193-L197】
+- **계층 렌더링**: 배경 및 전경 SVG 그룹은 동일한 데이터를 반영합니다. 배경 요소는 부드러운 앰비언트 네트워크를 제공하고, 전경 레이어는 인터랙티브한 원형 및 라벨을 추가합니다. 【F:script.js†L48-L87】
+- **인터랙티브 드래그**: 재사용 가능한 `drag` 헬퍼가 D3의 드래그 이벤트를 연결하여 사용자가 노드를 재배치할 수 있게 합니다. 드래그가 끝나면 물리 엔진이 위치를 안정화합니다. 【F:script.js†L116-L138】
+- **팝업 워크플로우**: 노드를 클릭하면 `showPopup`이 호출되어 팝업 이미지 소스를 교체하고 모달을 표시합니다. `hidePopup` 또는 `Escape` 키로 닫을 수 있습니다. 【F:script.js†L141-L155】
 
-## Responsive Behavior & Layout
-- **Radar synchronization**: `syncRadarToContainer` recalculates SVG viewboxes, radial forces, and pulse ring sizing whenever the window resizes, seeding nodes within the radar on first load. 【F:script.js†L162-L214】
-- **Viewport listeners**: the script listens for `resize` and initializes the sync routine immediately, guaranteeing the force layout fits the current viewport. 【F:script.js†L227-L229】
-- **Styling system**: `style.css` defines theme variables, neon HUD styling (currently commented in HTML), the circular radar container, pulsating rings, and popup presentation. Layers rely on mix-blend modes and gradients to achieve the sci-fi aesthetic. 【F:style.css†L1-L157】【F:style.css†L176-L237】
+## 반응형 동작 및 레이아웃
+- **레이더 동기화**: `syncRadarToContainer`는 창 크기가 변경될 때마다 SVG 뷰박스, 방사형 force, 펄스 링 크기를 재계산하며, 초기 로드시 노드들을 레이더 내부에 시딩합니다. 【F:script.js†L162-L214】
+- **뷰포트 리스너**: 스크립트는 `resize` 이벤트를 감지하고, 즉시 동기화 루틴을 실행하여 force 레이아웃이 현재 뷰포트에 맞춰지도록 합니다. 【F:script.js†L227-L229】
+- **스타일링 시스템**: `style.css`는 테마 변수, 네온 HUD 스타일(현재는 HTML에서 주석 처리됨), 원형 레이더 컨테이너, 맥박 링, 팝업 표시 스타일 등을 정의합니다. 각 레이어는 믹스 블렌드 모드와 그라디언트를 활용해 SF적 미학을 구현합니다. 【F:style.css†L1-L157】【F:style.css†L176-L237】
