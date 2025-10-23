@@ -103,6 +103,33 @@ const NODE_LIBRARY = new Map([
       hotspots: [],
     },
   ],
+  [
+    "Ambient Echo",
+    {
+      id: "Ambient Echo",
+      label: "Ambient Echo",
+      decorative: true,
+      appearance: { opacity: 0.28 },
+    },
+  ],
+  [
+    "Prismatic Drift",
+    {
+      id: "Prismatic Drift",
+      label: "Prismatic Drift",
+      decorative: true,
+      appearance: { opacity: 0.34 },
+    },
+  ],
+  [
+    "Signal Ghost",
+    {
+      id: "Signal Ghost",
+      label: "Signal Ghost",
+      decorative: true,
+      appearance: { opacity: 0.3 },
+    },
+  ],
 ]);
 
 const INITIAL_NODE_IDS = [
@@ -112,12 +139,16 @@ const INITIAL_NODE_IDS = [
   "IRS Office",
   "Singer",
   "Sign Spinner",
+  "Ambient Echo",
+  "Prismatic Drift",
+  "Signal Ghost",
 ];
 
 function cloneNodeConfig(config = {}) {
   return {
     id: config.id,
     label: config.label ?? config.id,
+    decorative: Boolean(config.decorative),
     img: config.img ?? null,
     video: config.video ? { ...config.video } : null,
     hotspots: Array.isArray(config.hotspots)
@@ -127,6 +158,7 @@ function cloneNodeConfig(config = {}) {
           target: h.target,
         }))
       : [],
+    appearance: config.appearance ? { ...config.appearance } : undefined,
   };
 }
 
@@ -141,6 +173,9 @@ const links = [
   { source: "Bagle", target: "Sign Spinner" },
   { source: "Actor", target: "Singer" },
   { source: "IRS Office", target: "Singer" },
+  { source: "Ambient Echo", target: "Young Evelyn" },
+  { source: "Prismatic Drift", target: "Singer" },
+  { source: "Signal Ghost", target: "Bagle" },
 ];
 
 const sceneContainer = document.querySelector(".scene-container");
@@ -215,8 +250,15 @@ function refreshGraph() {
     .selectAll("circle")
     .data(nodes, d => d.id)
     .join("circle")
-    .attr("class", "node--background")
-    .attr("r", 3);
+    .attr("class", d =>
+      d.decorative ? "node--background node--decorative" : "node--background"
+    )
+    .attr("r", d => (d.decorative ? 2.4 : 3))
+    .style("opacity", d => {
+      if (!d.decorative) return null;
+      const baseOpacity = d.appearance?.opacity ?? 0.3;
+      return Math.max(0, Math.min(1, baseOpacity * 0.85));
+    });
 
   link = linkGroup
     .selectAll("line")
@@ -228,9 +270,19 @@ function refreshGraph() {
     .selectAll("circle")
     .data(nodes, d => d.id)
     .join("circle")
-    .attr("class", "node")
-    .attr("r", 6)
+    .attr("class", d => (d.decorative ? "node node--decorative" : "node"))
+    .attr("r", d => (d.decorative ? 4.5 : 6))
+    .attr("aria-hidden", d => (d.decorative ? "true" : null))
+    .style("opacity", d => {
+      if (!d.decorative) return null;
+      const baseOpacity = d.appearance?.opacity ?? 0.3;
+      return Math.max(0, Math.min(1, baseOpacity));
+    })
+    .style("filter", d => (d.decorative ? "none" : null))
+    .style("cursor", d => (d.decorative ? "default" : null))
+    .style("pointer-events", d => (d.decorative ? "none" : "auto"))
     .on("click", (event, d) => {
+      if (d.decorative) return;
       event.stopPropagation();
       showPopupForNode(d);
     })
@@ -240,8 +292,8 @@ function refreshGraph() {
     .selectAll("text")
     .data(nodes, d => d.id)
     .join("text")
-    .attr("class", "label")
-    .text(d => d.label ?? d.id);
+    .attr("class", d => (d.decorative ? "label label--decorative" : "label"))
+    .text(d => (d.decorative ? "" : d.label ?? d.id));
 
   simulation.nodes(nodes);
   simulation.force("link").links(links);
@@ -349,6 +401,7 @@ function getVideoDuration(node, vid) {
 
 function showPopupForNode(nodeData) {
   if (!nodeData) return;
+  if (nodeData.decorative) return;
 
   scrollRestoration = window.scrollY || document.documentElement.scrollTop || 0;
   resetMediaState();

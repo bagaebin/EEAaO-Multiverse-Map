@@ -160,11 +160,29 @@ circle.node {
   z-index: 5;
 }
 
+circle.node.node--decorative {
+  fill: rgba(63, 242, 255, 0.18);
+  stroke: rgba(63, 242, 255, 0.35);
+  filter: none;
+  pointer-events: none;
+  cursor: default;
+}
+
+circle.node--background.node--decorative {
+  fill: rgba(63, 242, 255, 0.14);
+  stroke: rgba(10, 159, 255, 0.25);
+  opacity: 0.5;
+}
+
 text.label {
   font-size: 12px;
   font-family: "Pretendard", sans-serif;
   fill: var(--text-primary);
   text-shadow: 0 0 6px rgba(63, 242, 255, 0.5);
+}
+
+text.label.label--decorative {
+  display: none;
 }
 
 /* ==== pulse-ring(radar ring) ==== */
