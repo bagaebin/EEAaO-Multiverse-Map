@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>As Everything Everywhere All at Once</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <svg class="background-network" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet"></svg>
+  <div class="scene-container">
+    <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+  </div>
 
+  <!-- 인터랙티브 게임 시스템 적용 전까지 주석 처리 -->
+  <!-- <div class="hud">
+    <div class="hud__banner">
+      <span>Jumping Pads Compiled.</span>
+      <span class="hud__banner-success">Success!</span>
+    </div>
+    <aside class="hud__panel">
+      <div class="hud__panel-title">Improbable Actions</div>
+      <ul class="hud__panel-list">
+        <li><span>0.0012%</span> 프로세스를 사랑하다</li>
+        <li><span>0.0024%</span> 머리카락 모두 자르기</li>
+        <li><span>0.0045%</span> 창문 밖으로 뛰다</li>
+        <li><span>0.0056%</span> 코 부러뜨리기</li>
+        <li><span>0.0082%</span> 팔꿈치 핥기</li>
+        <li><span>0.0099%</span> 200번 재채기</li>
+        <li><span>0.0121%</span> 아빠에게 고해성사</li>
+        <li><span>0.0138%</span> 항공기에서 뛰다</li>
+        <li><span>0.0156%</span> 소설 쓰기</li>
+        <li><span>0.0174%</span> 혀끝을 떼기</li>
+        <li><span>0.0191%</span> 눈알 빼기</li>
+      </ul>
+    </aside>
+  </div> -->
+
+  <div class="popup" id="popup" aria-hidden="true">
+    <span class="popup-close" role="button" aria-label="Close popup" onclick="hidePopup()">✕</span>
+    <div id="mediaWrap" class="popup__media">
+      <video id="popupVideo" playsinline muted preload="auto"></video>
+      <img id="popupImg" src="" alt="node media" />
+      <div id="popupFallback" class="popup__fallback" aria-live="polite"></div>
+      <div id="hotspotLayer" aria-hidden="true"></div>
+    </div>
+  </div>
+  <div id="scrollGhost" aria-hidden="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>
