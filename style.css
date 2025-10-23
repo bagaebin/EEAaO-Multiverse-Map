@@ -169,7 +169,8 @@ text.label {
 /* ==== pulse-ring(radar ring) ==== */
 .pulse-ring {
   position: absolute;
-  inset: 50%;
+  top: 50%;
+  left: 50%;
   width: 60%;
   height: 60%;
   border-radius: 50%;

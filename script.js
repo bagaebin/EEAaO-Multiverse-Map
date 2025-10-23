@@ -18,6 +18,8 @@ const links = [
 const sceneContainer = document.querySelector(".scene-container");
 const lensSvg = d3.select(".scene-container svg");
 const backgroundSvg = d3.select(".background-network");
+const pulseRings = Array.from(document.querySelectorAll(".pulse-ring"));
+const PULSE_RING_DEFAULT_SCALES = [0.6, 0.75, 0.9];
 
 let width = 800;
 let height = 800;
@@ -170,6 +172,8 @@ function syncRadarToContainer() {
   const centerX = width / 2;
   const centerY = height / 2;
 
+  syncPulseRings(centerX, centerY);
+
   lensSvg
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("width", width)
@@ -191,6 +195,23 @@ function syncRadarToContainer() {
     .force("radial", d3.forceRadial(radius, centerX, centerY).strength(0.08));
 
   simulation.alpha(0.2).restart();
+}
+
+function syncPulseRings(centerX, centerY) {
+  const baseSize = Math.min(width, height);
+
+  pulseRings.forEach((ring, index) => {
+    const scale =
+      parseFloat(ring.dataset.scale) ||
+      PULSE_RING_DEFAULT_SCALES[index] ||
+      PULSE_RING_DEFAULT_SCALES[PULSE_RING_DEFAULT_SCALES.length - 1];
+    const diameter = baseSize * scale;
+
+    ring.style.width = `${diameter}px`;
+    ring.style.height = `${diameter}px`;
+    ring.style.left = `${centerX}px`;
+    ring.style.top = `${centerY}px`;
+  });
 }
 
 function seedNodesRandomly(radius, centerX, centerY) {
