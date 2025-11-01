@@ -931,7 +931,7 @@ function updateLoadingProgress(completed, total) {
   if (!loadingOverlay) return;
   const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
   if (loadingStatus) {
-    loadingStatus.textContent = `멀티버스 초기화 중... ${percent}%`;
+    loadingStatus.textContent = `Reseting the map ${percent}%`;
   }
   if (loadingBar) {
     loadingBar.style.width = `${percent}%`;
@@ -1035,7 +1035,7 @@ function preloadAllMediaSources() {
   if (!total) {
     updateLoadingProgress(0, 0);
     if (loadingStatus) {
-      loadingStatus.textContent = "탑승 준비 완료";
+      loadingStatus.textContent = "Ready for jumping";
     }
     if (loadingProgress) {
       loadingProgress.setAttribute("aria-valuenow", "100");
