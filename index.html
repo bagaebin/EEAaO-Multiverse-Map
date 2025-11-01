@@ -45,9 +45,14 @@
 
   <!-- 인터랙티브 게임 시스템 적용 전까지 주석 처리 -->
   <div class="hud">
-    <div class="hud__banner">
-      <span>Jumping Pads Compiled.</span>
-      <span class="hud__banner-success">Success!</span>
+    <div class="hud__banner" aria-live="polite" aria-hidden="true">
+      <div class="hud__banner-content">
+        <div class="hud__banner-title">
+          <span class="hud__banner-node">Multiverse</span>
+          <span class="hud__banner-success hud__banner-status">connected</span>
+        </div>
+        <div class="hud__banner-body">New jump coordinates synchronized.</div>
+      </div>
     </div>
   </div>
 
