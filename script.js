@@ -826,6 +826,13 @@ const DECORATIVE_CONNECTION_SPAN = 2;
 const INACTIVITY_RESET_MS = 60 * 1000;
 const INACTIVITY_CHECK_INTERVAL = 5000;
 const INTERACTION_HINT_DURATION = 5000;
+const CELEBRATION_HOTKEY_KEY = "l";
+const rawPlatform =
+  typeof navigator !== "undefined"
+    ? navigator.platform || navigator.userAgent || ""
+    : "";
+const isApplePlatform = /Mac|iPhone|iPad|iPod/i.test(rawPlatform);
+const CELEBRATION_HOTKEY_LABEL = `${isApplePlatform ? "⌘" : "Ctrl"} + Shift + L`;
 
 function cloneNodeConfig(config = {}) {
   return {
@@ -910,6 +917,10 @@ const loadingStatus = document.getElementById("loadingStatus");
 const loadingBar = document.getElementById("loadingBar");
 const loadingProgress = document.getElementById("loadingProgress");
 const interactionHint = document.getElementById("interactionHint");
+const hudBanner = document.getElementById("connectionBanner");
+const hudBannerProgress = document.getElementById("hudBannerProgress");
+const hudBannerSuccess = document.getElementById("hudBannerSuccess");
+const hudBannerShortcut = document.getElementById("hudBannerShortcut");
 
 let width = 800;
 let height = 800;
@@ -924,6 +935,11 @@ const tickThrottleMap = new Map();
 const mediaPreloadCache = new Map();
 let interactionHintTimerId = null;
 let pendingInteractionHint = false;
+let hudBannerPulseTimeout = null;
+
+if (hudBannerShortcut && CELEBRATION_HOTKEY_LABEL) {
+  hudBannerShortcut.textContent = CELEBRATION_HOTKEY_LABEL;
+}
 
 backgroundSvg.attr("preserveAspectRatio", "xMidYMid meet");
 
@@ -1442,6 +1458,7 @@ function refreshGraph() {
   simulation.nodes(nodes);
   simulation.force("link").links(links);
   simulation.alpha(0.7).restart();
+  updateConnectionBanner();
 }
 
 function ticked() {
@@ -1783,10 +1800,71 @@ function handleInteractiveNodeOpened(nodeData) {
   if (!nodeData || nodeData.decorative) return;
   visitedInteractiveNodes.add(nodeData.id);
   maybeTriggerCelebration();
+  updateConnectionBanner();
 }
 
 function getInteractiveNodeIds() {
   return nodes.filter(n => !n.decorative).map(n => n.id);
+}
+
+function computeInteractiveConnectivityStats() {
+  const ids = getInteractiveNodeIds();
+  const total = ids.length;
+  if (!total) {
+    return {
+      total: 0,
+      linkedCount: 0,
+      largestComponent: 0,
+      fullyConnected: false,
+    };
+  }
+
+  const interactiveSet = new Set(ids);
+  const adjacency = new Map();
+  ids.forEach(id => adjacency.set(id, new Set()));
+  const linkedNodes = new Set();
+
+  links.forEach(link => {
+    const source = getNodeId(link.source);
+    const target = getNodeId(link.target);
+    if (!interactiveSet.has(source) || !interactiveSet.has(target)) return;
+    linkedNodes.add(source);
+    linkedNodes.add(target);
+    adjacency.get(source).add(target);
+    adjacency.get(target).add(source);
+  });
+
+  const visited = new Set();
+  let largestComponent = 0;
+
+  ids.forEach(id => {
+    if (visited.has(id)) return;
+    const stack = [id];
+    let size = 0;
+    while (stack.length) {
+      const current = stack.pop();
+      if (visited.has(current)) continue;
+      visited.add(current);
+      size += 1;
+      adjacency.get(current).forEach(neighbor => {
+        if (!visited.has(neighbor)) {
+          stack.push(neighbor);
+        }
+      });
+    }
+    if (size > largestComponent) {
+      largestComponent = size;
+    }
+  });
+
+  const fullyConnected = largestComponent === total && total > 0;
+
+  return {
+    total,
+    linkedCount: linkedNodes.size,
+    largestComponent,
+    fullyConnected,
+  };
 }
 
 function areAllInteractiveNodesOpened() {
@@ -1796,42 +1874,65 @@ function areAllInteractiveNodesOpened() {
 }
 
 function areInteractiveNodesFullyConnected() {
-  const ids = getInteractiveNodeIds();
-  if (!ids.length) return false;
-  const interactiveSet = new Set(ids);
-  const adjacency = new Map();
-  ids.forEach(id => adjacency.set(id, new Set()));
+  return computeInteractiveConnectivityStats().fullyConnected;
+}
 
-  links.forEach(link => {
-    const source = getNodeId(link.source);
-    const target = getNodeId(link.target);
-    if (!interactiveSet.has(source) || !interactiveSet.has(target)) return;
-    adjacency.get(source).add(target);
-    adjacency.get(target).add(source);
-  });
+function updateConnectionBanner() {
+  if (!hudBanner) return;
+  const stats = computeInteractiveConnectivityStats();
+  const total = stats.total;
+  const visitedCount = total > 0 ? Math.min(visitedInteractiveNodes.size, total) : 0;
+  const ready = total > 0 && visitedCount === total && stats.fullyConnected;
 
-  const stack = [ids[0]];
-  const visited = new Set();
-  while (stack.length) {
-    const current = stack.pop();
-    if (visited.has(current)) continue;
-    visited.add(current);
-    adjacency.get(current).forEach(neighbor => {
-      if (!visited.has(neighbor)) {
-        stack.push(neighbor);
-      }
-    });
+  if (hudBannerProgress) {
+    const connectionLabel =
+      total > 0 ? `Linked ${stats.linkedCount} / ${total}` : "Linked 0 / 0";
+    const visitedLabel =
+      total > 0 ? `Visited ${visitedCount} / ${total}` : "Visited 0 / 0";
+    hudBannerProgress.textContent = `${connectionLabel} • ${visitedLabel}`;
   }
 
-  return visited.size === ids.length;
+  if (hudBannerSuccess) {
+    hudBannerSuccess.setAttribute("aria-hidden", ready ? "false" : "true");
+  }
+
+  hudBanner.setAttribute("aria-hidden", "false");
+  hudBanner.classList.toggle("hud__banner--complete", ready);
+}
+
+function flashConnectionBanner() {
+  if (!hudBanner) return;
+  hudBanner.classList.add("hud__banner--pulse");
+  if (hudBannerPulseTimeout) {
+    clearTimeout(hudBannerPulseTimeout);
+  }
+  hudBannerPulseTimeout = setTimeout(() => {
+    hudBanner.classList.remove("hud__banner--pulse");
+    hudBannerPulseTimeout = null;
+  }, 600);
+}
+
+function isModKeyPressed(event) {
+  if (!event) return false;
+  return Boolean(event.metaKey || event.ctrlKey);
+}
+
+function triggerCelebration({ force = false } = {}) {
+  if (celebrationAnimating || isCelebrationOpen()) return false;
+  if (!force) {
+    if (celebrationTriggered) return false;
+    celebrationTriggered = true;
+  }
+  markInteraction();
+  startCelebrationSequence();
+  return true;
 }
 
 function maybeTriggerCelebration() {
-  if (celebrationTriggered || celebrationAnimating) return;
+  if (celebrationAnimating || celebrationTriggered) return;
   if (!areAllInteractiveNodesOpened()) return;
   if (!areInteractiveNodesFullyConnected()) return;
-  celebrationTriggered = true;
-  startCelebrationSequence();
+  triggerCelebration();
 }
 
 function startCelebrationSequence() {
@@ -2135,6 +2236,26 @@ if (celebrationReplayBtn) {
 }
 
 document.addEventListener("keydown", event => {
+  const key = typeof event.key === "string" ? event.key.toLowerCase() : "";
+
+  if (key === CELEBRATION_HOTKEY_KEY && event.shiftKey && isModKeyPressed(event)) {
+    event.preventDefault();
+    markInteraction();
+    const stats = computeInteractiveConnectivityStats();
+    const total = stats.total;
+    const visitedCount = total > 0 ? Math.min(visitedInteractiveNodes.size, total) : 0;
+    const unlocked = celebrationTriggered;
+    const ready = total > 0 && visitedCount === total && stats.fullyConnected;
+    if (!ready && !unlocked) {
+      flashConnectionBanner();
+      return;
+    }
+    if (!triggerCelebration({ force: true })) {
+      flashConnectionBanner();
+    }
+    return;
+  }
+
   if (event.key === "Escape") {
     if (isCelebrationOpen()) {
       event.preventDefault();
@@ -2149,7 +2270,7 @@ document.addEventListener("keydown", event => {
   }
   if (isCelebrationOpen()) return;
   if (!popup.classList.contains("open")) return;
-  if (event.key.toLowerCase() === "i") {
+  if (key === "i") {
     event.preventDefault();
     toggleInspector();
   } else if (event.key === "[") {

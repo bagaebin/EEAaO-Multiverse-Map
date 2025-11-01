@@ -156,11 +156,14 @@ circle.node--background {
   left: 32px;
   background: rgba(12, 36, 64, 0.55);
   border: 1px solid rgba(63, 242, 255, 0.4);
-  padding: 8px 12px;
+  padding: 10px 14px;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
   display: flex;
-  gap: 8px;
-  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  min-width: 220px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .hud__banner::before {
@@ -168,8 +171,69 @@ circle.node--background {
   color: var(--accent);
 }
 
+.hud__banner-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+}
+
+.hud__banner-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.hud__banner-progress {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.hud__banner-shortcut {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
 .hud__banner-success {
   color: var(--accent);
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hud__banner-success[aria-hidden="false"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hud__banner--complete {
+  border-color: rgba(63, 242, 255, 0.65);
+  box-shadow: 0 0 24px rgba(63, 242, 255, 0.35);
+}
+
+.hud__banner--pulse {
+  animation: hud-banner-pulse 0.6s ease;
+}
+
+@keyframes hud-banner-pulse {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
+  }
+  40% {
+    transform: translateY(-2px);
+    box-shadow: 0 0 32px rgba(63, 242, 255, 0.45);
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
+  }
 }
 
 .hud__panel {

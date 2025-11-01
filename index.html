@@ -45,9 +45,20 @@
 
   <!-- 인터랙티브 게임 시스템 적용 전까지 주석 처리 -->
   <div class="hud">
-    <div class="hud__banner">
-      <span>Jumping Pads Compiled.</span>
-      <span class="hud__banner-success">Success!</span>
+    <div
+      id="connectionBanner"
+      class="hud__banner"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="hud__banner-row">
+        <span class="hud__banner-label">Jumping Pads</span>
+        <span id="hudBannerShortcut" class="hud__banner-shortcut">Ctrl + Shift + L</span>
+      </div>
+      <div class="hud__banner-row">
+        <span id="hudBannerProgress" class="hud__banner-progress">Linked 0 / 0 • Visited 0 / 0</span>
+        <span id="hudBannerSuccess" class="hud__banner-success" aria-hidden="true">Success!</span>
+      </div>
     </div>
   </div>
 
