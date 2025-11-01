@@ -1,127 +1,258 @@
 const NODE_LIBRARY = new Map([
   [
-    "Young Evelyn",
+    "young evelyn",
     {
-      id: "Young Evelyn",
-      label: "Young Evelyn",
+      id: "young evelyn",
+      label: "young evelyn",
       video: { src: "videos/01_Young Evelyn.mp4", duration: 5 },
       hotspots: [
         {
           timeRange: [0.8, 1.6],
           rect: { x: 0.42, y: 0.32, w: 0.22, h: 0.3 },
-          target: "Bagle",
+          target: "bagle",
         },
         {
           timeRange: [0.903, 1.903],
           rect: { x: 0.3733, y: 0.7784, w: 0.0679, h: 0.1299 },
-          target: "Actor",
+          target: "actor",
         },
         {
           timeRange: [1.806, 2.006],
           rect: { x: 0.0225, y: 0.3938, w: 0.1107, h: 0.2379 },
-          target: "Sign Spinner",
+          target: "sign spinner",
         },
         {
           timeRange: [3.11, 4.31],
           rect: { x: 0.367, y: 0.3757, w: 0.0503, h: 0.0771 },
-          target: "IRS Office",
+          target: "irs office",
         },
       ],
     },
   ],
   [
-    "Bagle",
+    "bagle",
     {
-      id: "Bagle",
-      label: "Bagle",
+      id: "bagle",
+      label: "bagle",
       video: { src: "videos/02_Bagle.mp4", duration: 5 },
       hotspots: [
         {
           timeRange: [2.957, 4.157],
           rect: { x: 0.3482, y: 0.3236, w: 0.0931, h: 0.1629 },
-          target: "Young Evelyn",
+          target: "young evelyn",
+        },
+        {
+          timeRange: [0.5, 1.5],
+          rect: { x: 0.58, y: 0.26, w: 0.2, h: 0.32 },
+          target: "actor",
         },
       ],
     },
   ],
   [
-    "Actor",
+    "actor",
     {
-      id: "Actor",
-      label: "Actor",
+      id: "actor",
+      label: "actor",
       video: { src: "videos/03_Actor.mp4", duration: 5 },
       hotspots: [
         {
           timeRange: [1.5, 2.2],
           rect: { x: 0.5, y: 0.3, w: 0.22, h: 0.3 },
-          target: "Singer",
+          target: "singer",
         },
         {
           timeRange: [2.286, 3.486],
           rect: { x: 0.45, y: 0.5709, w: 0.1434, h: 0.3656 },
-          target: "Bagle",
+          target: "bagle",
+        },
+        {
+          timeRange: [3.8, 4.6],
+          rect: { x: 0.14, y: 0.28, w: 0.16, h: 0.25 },
+          target: "irs office",
         },
       ],
     },
   ],
   [
-    "IRS Office",
+    "irs office",
     {
-      id: "IRS Office",
-      label: "IRS Office",
+      id: "irs office",
+      label: "irs office",
       video: { src: "videos/04_IRS Office.mp4", duration: 5 },
       hotspots: [
         {
           timeRange: [2.6, 3.2],
           rect: { x: 0.55, y: 0.42, w: 0.22, h: 0.24 },
-          target: "Sign Spinner",
+          target: "sign spinner",
         },
         {
           timeRange: [2.186, 3.386],
           rect: { x: 0.8527, y: 0.5255, w: 0.0566, h: 0.1078 },
-          target: "Bagle",
-        },
-        {
-          timeRange: [2.424, 3.624],
-          rect: { x: 0.313, y: 0.306, w: 0.0264, h: 0.044 },
-          target: "Bagle",
+          target: "bagle",
         },
       ],
     },
   ],
   [
-    "Singer",
+    "singer",
     {
-      id: "Singer",
-      label: "Singer",
+      id: "singer",
+      label: "singer",
       video: { src: "videos/05_Singer.mp4", duration: 5 },
       hotspots: [
         {
           timeRange: [2.1, 2.7],
           rect: { x: 0.32, y: 0.26, w: 0.28, h: 0.34 },
-          target: "Young Evelyn",
+          target: "young evelyn",
         },
         {
           timeRange: [4.029, 5.229],
           rect: { x: 0.4312, y: 0.0073, w: 0.0717, h: 0.1188 },
-          target: "Bagle",
+          target: "bagle",
         },
       ],
     },
   ],
   [
-    "Sign Spinner",
+    "pottery",
     {
-      id: "Sign Spinner",
-      label: "Sign Spinner",
+      id: "pottery",
+      label: "pottery",
+      video: { src: "videos/06_pottery.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "sign spinner",
+    {
+      id: "sign spinner",
+      label: "sign spinner",
       video: { src: "videos/07_Sign Spinner.mp4", duration: 5 },
       hotspots: [
         {
           timeRange: [1.0, 1.6],
           rect: { x: 0.4, y: 0.35, w: 0.24, h: 0.3 },
-          target: "Bagle",
+          target: "bagle",
         },
       ],
+    },
+  ],
+  [
+    "cat",
+    {
+      id: "cat",
+      label: "cat",
+      video: { src: "videos/08_cat.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "slaughterhouse",
+    {
+      id: "slaughterhouse",
+      label: "slaughterhouse",
+      video: { src: "videos/09_slaughterhouse.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "tinder",
+    {
+      id: "tinder",
+      label: "tinder",
+      video: { src: "videos/10_tinder.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "macho",
+    {
+      id: "macho",
+      label: "macho",
+      video: { src: "videos/11_macho.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "lab",
+    {
+      id: "lab",
+      label: "lab",
+      video: { src: "videos/12_lab.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "monster",
+    {
+      id: "monster",
+      label: "monster",
+      video: { src: "videos/13_monster.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "animation",
+    {
+      id: "animation",
+      label: "animation",
+      video: { src: "videos/14_animation.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "youtube",
+    {
+      id: "youtube",
+      label: "youtube",
+      video: { src: "videos/15_youtube.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "soldier",
+    {
+      id: "soldier",
+      label: "soldier",
+      video: { src: "videos/16_soldier.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "hotdog fingers",
+    {
+      id: "hotdog fingers",
+      label: "hotdog fingers",
+      video: { src: "videos/17_hotdog fingers.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "jail",
+    {
+      id: "jail",
+      label: "jail",
+      video: { src: "videos/18_jail.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "statue",
+    {
+      id: "statue",
+      label: "statue",
+      video: { src: "videos/19_statue.mp4", duration: 5 },
+      hotspots: [],
+    },
+  ],
+  [
+    "grape",
+    {
+      id: "grape",
+      label: "grape",
+      video: { src: "videos/20_grape.mp4", duration: 5 },
+      hotspots: [],
     },
   ],
   [
@@ -415,12 +546,26 @@ const NODE_LIBRARY = new Map([
 ]);
 
 const INITIAL_NODE_IDS = [
-  "Young Evelyn",
-  "Bagle",
-  "Actor",
-  "IRS Office",
-  "Singer",
-  "Sign Spinner",
+  "young evelyn",
+  "bagle",
+  "actor",
+  "irs office",
+  "singer",
+  "pottery",
+  "sign spinner",
+  "cat",
+  "slaughterhouse",
+  "tinder",
+  "macho",
+  "lab",
+  "monster",
+  "animation",
+  "youtube",
+  "soldier",
+  "hotdog fingers",
+  "jail",
+  "statue",
+  "grape",
   "Ghost 1",
   "Ghost 2",
   "Ghost 3",
@@ -458,6 +603,10 @@ const INITIAL_NODE_IDS = [
 const CELEBRATION_VIDEO_SRC = "videos/I love you_speech.mp4";
 const DONUT_ANIMATION_DURATION = 1000;
 const HEART_ANIMATION_DURATION = 2000;
+const DECORATIVE_CONNECTION_SPAN = 2;
+const INACTIVITY_RESET_MS = 60 * 1000;
+const INACTIVITY_CHECK_INTERVAL = 5000;
+const INTERACTION_HINT_DURATION = 5000;
 
 function cloneNodeConfig(config = {}) {
   return {
@@ -477,17 +626,46 @@ function cloneNodeConfig(config = {}) {
   };
 }
 
+function createDecorativeLinkBlueprints(allNodes) {
+  const decorativeIds = allNodes.filter(n => n.decorative).map(n => n.id);
+  if (decorativeIds.length <= 1) return [];
+
+  const maxStep = Math.min(
+    Math.max(1, DECORATIVE_CONNECTION_SPAN),
+    decorativeIds.length - 1
+  );
+  const dedupe = new Set();
+  const result = [];
+
+  decorativeIds.forEach((sourceId, index) => {
+    for (let step = 1; step <= maxStep; step += 1) {
+      const targetIndex = (index + step) % decorativeIds.length;
+      const targetId = decorativeIds[targetIndex];
+      if (!targetId || targetId === sourceId) continue;
+      const key = index < targetIndex ? `${index}-${targetIndex}` : `${targetIndex}-${index}`;
+      if (dedupe.has(key)) continue;
+      dedupe.add(key);
+      result.push({ source: sourceId, target: targetId });
+    }
+  });
+
+  return result;
+}
+
 const nodes = INITIAL_NODE_IDS.map(id =>
   cloneNodeConfig(NODE_LIBRARY.get(id) ?? { id })
 );
 
-const links = [];
+const baseDecorativeLinks = createDecorativeLinkBlueprints(nodes);
+const links = baseDecorativeLinks.map(link => ({ ...link }));
 
 const visitedInteractiveNodes = new Set();
 let celebrationTriggered = false;
 let celebrationAnimating = false;
 let celebrationHoldingNodes = false;
 let celebrationAnimationToken = 0;
+let lastInteractionAt = performance.now();
+let inactivityTimerId = null;
 
 const sceneContainer = document.querySelector(".scene-container");
 const lensSvg = d3.select(".scene-container svg");
@@ -508,6 +686,11 @@ const celebrationVideo = document.getElementById("celebrationVideo");
 const celebrationCloseBtn = document.getElementById("celebrationClose");
 const celebrationDismissBtn = document.getElementById("celebrationDismiss");
 const celebrationReplayBtn = document.getElementById("celebrationReplay");
+const loadingOverlay = document.getElementById("loadingOverlay");
+const loadingStatus = document.getElementById("loadingStatus");
+const loadingBar = document.getElementById("loadingBar");
+const loadingProgress = document.getElementById("loadingProgress");
+const interactionHint = document.getElementById("interactionHint");
 
 let width = 800;
 let height = 800;
@@ -519,6 +702,9 @@ let audioContext = null;
 let tickBuffer = null;
 let tickBufferPromise = null;
 const tickThrottleMap = new Map();
+const mediaPreloadCache = new Map();
+let interactionHintTimerId = null;
+let pendingInteractionHint = false;
 
 backgroundSvg.attr("preserveAspectRatio", "xMidYMid meet");
 
@@ -741,6 +927,157 @@ function loadTickBuffer() {
   return tickBufferPromise;
 }
 
+function updateLoadingProgress(completed, total) {
+  if (!loadingOverlay) return;
+  const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+  if (loadingStatus) {
+    loadingStatus.textContent = `Reseting the map ${percent}%`;
+  }
+  if (loadingBar) {
+    loadingBar.style.width = `${percent}%`;
+  }
+  if (loadingProgress) {
+    loadingProgress.setAttribute("aria-valuenow", String(percent));
+  }
+}
+
+function hideLoadingOverlay() {
+  if (!loadingOverlay) return;
+  loadingOverlay.classList.add("loading-overlay--hidden");
+  setTimeout(() => {
+    loadingOverlay.remove();
+  }, 600);
+}
+
+function hideInteractionHint() {
+  if (interactionHintTimerId) {
+    clearTimeout(interactionHintTimerId);
+    interactionHintTimerId = null;
+  }
+  if (!interactionHint) return;
+  interactionHint.classList.remove("hud__panel--visible");
+  interactionHint.setAttribute("aria-hidden", "true");
+}
+
+function showInteractionHint() {
+  if (!interactionHint) return;
+  if (interactionHintTimerId) {
+    clearTimeout(interactionHintTimerId);
+  }
+  pendingInteractionHint = false;
+  interactionHint.classList.add("hud__panel--visible");
+  interactionHint.setAttribute("aria-hidden", "false");
+  interactionHintTimerId = setTimeout(() => {
+    interactionHintTimerId = null;
+    hideInteractionHint();
+  }, INTERACTION_HINT_DURATION);
+}
+
+function queueInteractionHint() {
+  if (!interactionHint) return;
+  pendingInteractionHint = true;
+}
+
+function preloadVideoSource(src) {
+  if (!src) return Promise.resolve();
+  if (mediaPreloadCache.has(src)) return mediaPreloadCache.get(src);
+
+  const task = new Promise(resolve => {
+    const video = document.createElement("video");
+    video.preload = "auto";
+    video.muted = true;
+    let settled = false;
+
+    const finalize = () => {
+      if (settled) return;
+      settled = true;
+      video.removeAttribute("src");
+      video.load();
+      resolve(src);
+    };
+
+    const handleError = error => {
+      if (settled) return;
+      settled = true;
+      console.warn(`[Media] Failed to preload ${src}`, error);
+      video.removeAttribute("src");
+      video.load();
+      resolve(src);
+    };
+
+    video.addEventListener("canplaythrough", finalize, { once: true });
+    video.addEventListener("loadeddata", finalize, { once: true });
+    video.addEventListener("error", handleError, { once: true });
+    video.src = src;
+    video.load();
+  });
+
+  mediaPreloadCache.set(src, task);
+  return task;
+}
+
+// Preload the entire media library up front so that runtime playback is stutter-free
+// and compatible with the scroll-driven interaction model.
+function preloadAllMediaSources() {
+  const sources = new Set();
+  nodes.forEach(nodeItem => {
+    const src = nodeItem.video?.src;
+    if (src) {
+      sources.add(src);
+    }
+  });
+  if (CELEBRATION_VIDEO_SRC) {
+    sources.add(CELEBRATION_VIDEO_SRC);
+  }
+
+  const uniqueSources = Array.from(sources);
+  const total = uniqueSources.length;
+  if (!total) {
+    updateLoadingProgress(0, 0);
+    if (loadingStatus) {
+      loadingStatus.textContent = "Ready for jumping";
+    }
+    if (loadingProgress) {
+      loadingProgress.setAttribute("aria-valuenow", "100");
+    }
+    if (loadingBar) {
+      loadingBar.style.width = "100%";
+    }
+    return Promise.resolve().then(() => {
+      setTimeout(() => hideLoadingOverlay(), 250);
+    });
+  }
+
+  let completed = 0;
+  updateLoadingProgress(0, total);
+
+  const tasks = uniqueSources.map(src =>
+    preloadVideoSource(src)
+      .catch(error => {
+        console.warn(`[Media] Error during preload for ${src}`, error);
+      })
+      .finally(() => {
+        completed += 1;
+        updateLoadingProgress(completed, total);
+      })
+  );
+
+  return Promise.all(tasks)
+    .then(() => loadTickBuffer().catch(() => null))
+    .then(() => {
+      if (loadingStatus) {
+        loadingStatus.textContent = "탑승 준비 완료";
+      }
+      if (loadingProgress) {
+        loadingProgress.setAttribute("aria-valuenow", "100");
+      }
+      if (loadingBar) {
+        loadingBar.style.width = "100%";
+      }
+      setTimeout(() => hideLoadingOverlay(), 250);
+    });
+}
+
 function shouldThrottleTick(key, interval) {
   if (!interval) return false;
   const now = performance.now();
@@ -748,6 +1085,10 @@ function shouldThrottleTick(key, interval) {
   if (now - last < interval) return true;
   tickThrottleMap.set(key, now);
   return false;
+}
+
+function markInteraction() {
+  lastInteractionAt = performance.now();
 }
 
 function triggerVibration(duration = 10) {
@@ -791,11 +1132,13 @@ function playTick({ playbackRate = 1, volume = TICK_VOLUME, throttleKey, throttl
 }
 
 function triggerClickFeedback() {
+  markInteraction();
   playTick({ playbackRate: 1, throttleKey: "click", throttleMs: CLICK_TICK_INTERVAL, skipIfLoading: false });
   triggerVibration(10);
 }
 
 function triggerScrollFeedback(delta) {
+  markInteraction();
   if (!Number.isFinite(delta)) return;
   const magnitude = Math.abs(delta);
   if (magnitude < SCROLL_DELTA_THRESHOLD) return;
@@ -986,6 +1329,7 @@ function getVideoDuration(node, vid) {
 function showPopupForNode(nodeData) {
   if (!nodeData) return;
   if (nodeData.decorative) return;
+  markInteraction();
 
   scrollRestoration = window.scrollY || document.documentElement.scrollTop || 0;
   resetMediaState();
@@ -1163,7 +1507,50 @@ function ensureLinkBetween(sourceId, targetId) {
   }
 }
 
+function restoreDecorativeLinks() {
+  links.length = 0;
+  baseDecorativeLinks.forEach(link => {
+    links.push({ source: link.source, target: link.target });
+  });
+}
+
+function resetProgressState() {
+  if (popup.classList.contains("open")) {
+    hidePopup();
+  }
+  if (isCelebrationOpen()) {
+    closeCelebrationOverlay();
+  } else {
+    celebrationAnimationToken += 1;
+    celebrationAnimating = false;
+    celebrationHoldingNodes = false;
+    releaseNodesAfterCelebration();
+  }
+
+  visitedInteractiveNodes.clear();
+  celebrationTriggered = false;
+  restoreDecorativeLinks();
+  refreshGraph();
+  if (typeof console !== "undefined" && typeof console.info === "function") {
+    console.info("[Session] Progress state reset after inactivity.");
+  }
+  hideInteractionHint();
+  queueInteractionHint();
+  markInteraction();
+}
+
+function startInactivityWatcher() {
+  if (inactivityTimerId) return;
+  inactivityTimerId = setInterval(() => {
+    const idleFor = performance.now() - lastInteractionAt;
+    if (idleFor >= INACTIVITY_RESET_MS) {
+      resetProgressState();
+    }
+  }, INACTIVITY_CHECK_INTERVAL);
+}
+
 function openInteractiveNode(targetId) {
+  markInteraction();
   const target = ensureNode(targetId);
   if (!target) return;
   if (activeNode) {
@@ -1445,6 +1832,13 @@ if (hotspotLayer) {
   });
 }
 
+window.addEventListener("mousemove", () => {
+  if (pendingInteractionHint) {
+    showInteractionHint();
+  }
+  markInteraction();
+});
+
 window.addEventListener("mousemove", event => {
   if (!inspectorOn || !dragStart || !draftBox) return;
   const rect = hotspotLayer.getBoundingClientRect();
@@ -1626,6 +2020,29 @@ window.addEventListener("resize", () => {
     requestAnimationFrame(() => updateHotspotsVisibility(activeNode, popupVideo));
   }
 });
+
+[
+  "pointerdown",
+  "keydown",
+  "wheel",
+  "touchstart",
+].forEach(eventName => {
+  const options =
+    eventName === "wheel" || eventName === "touchstart"
+      ? { passive: true, capture: true }
+      : { capture: true };
+  window.addEventListener(eventName, markInteraction, options);
+});
+
+preloadAllMediaSources()
+  .then(() => {
+    setTimeout(() => {
+      showInteractionHint();
+    }, 350);
+  })
+  .finally(() => {
+    startInactivityWatcher();
+  });
 
 refreshGraph();
 simulation.on("tick", ticked);

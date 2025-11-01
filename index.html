@@ -2,11 +2,29 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>As Everything Everywhere All at Once</title>
+  <title>Verse-jump Simulator</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="loadingOverlay" class="loading-overlay" role="alert" aria-live="assertive">
+    <div class="loading-overlay__content">
+      <div class="loading-overlay__spinner" aria-hidden="true"></div>
+      <div class="loading-overlay__details">
+        <p id="loadingStatus" class="loading-overlay__status">멀티버스 초기화 중... 0%</p>
+        <div
+          id="loadingProgress"
+          class="loading-overlay__progress"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <span id="loadingBar" class="loading-overlay__progress-bar"></span>
+        </div>
+      </div>
+    </div>
+  </div>
   <svg class="background-network" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet"></svg>
   <div class="scene-container">
     <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
@@ -31,22 +49,6 @@
       <span>Jumping Pads Compiled.</span>
       <span class="hud__banner-success">Success!</span>
     </div>
-    <aside class="hud__panel">
-      <div class="hud__panel-title">Improbable Actions</div>
-      <ul class="hud__panel-list">
-        <li><span>0.0012%</span> 프로세스를 사랑하다</li>
-        <li><span>0.0024%</span> 머리카락 모두 자르기</li>
-        <li><span>0.0045%</span> 창문 밖으로 뛰다</li>
-        <li><span>0.0056%</span> 코 부러뜨리기</li>
-        <li><span>0.0082%</span> 팔꿈치 핥기</li>
-        <li><span>0.0099%</span> 200번 재채기</li>
-        <li><span>0.0121%</span> 아빠에게 고해성사</li>
-        <li><span>0.0138%</span> 항공기에서 뛰다</li>
-        <li><span>0.0156%</span> 소설 쓰기</li>
-        <li><span>0.0174%</span> 혀끝을 떼기</li>
-        <li><span>0.0191%</span> 눈알 빼기</li>
-      </ul>
-    </aside>
   </div> -->
 
   <div class="popup" id="popup" aria-hidden="true">
@@ -70,6 +72,33 @@
     </div>
   </div>
   <div id="scrollGhost" aria-hidden="true"></div>
+  <aside
+    id="interactionHint"
+    class="hud__panel hud__panel--hint"
+    role="status"
+    aria-live="polite"
+    aria-hidden="true"
+  >
+    <div class="hud__panel-title">Controls</div>
+    <ul class="hud__hint-list nowrap">
+      <li>
+        <span class="hud__hint-action">Drag</span>
+        <span class="hud__hint-desc">Move the map</span>
+      </li>
+      <li>
+        <span class="hud__hint-action">Scroll</span>
+        <span class="hud__hint-desc">Zoom in/out</span>
+      </li>
+      <li>
+        <span class="hud__hint-action">Click a node</span>
+        <span class="hud__hint-desc">Travel through the multiverse</span>
+      </li>
+      <li>
+        <span class="hud__hint-action">Drag a node</span>
+        <span class="hud__hint-desc">Shift the multiverse</span>
+      </li>
+    </ul>
+  </aside>
   <script src="script.js"></script>
 </body>
 </html>
