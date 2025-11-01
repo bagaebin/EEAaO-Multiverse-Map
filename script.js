@@ -764,6 +764,58 @@ const NODE_LIBRARY = new Map([
   ],
 ]);
 
+const HUD_BANNER_DISPLAY_MS = 2000;
+const DEFAULT_BANNER_HIGHLIGHT = "connected";
+const DEFAULT_BANNER_BODY = "A new branch of the multiverse is now accessible.";
+
+const connectionBannerModule = (() => {
+  const registry = new Map();
+
+  function normalizeId(nodeId) {
+    return typeof nodeId === "string" ? nodeId.trim().toLowerCase() : "";
+  }
+
+  function normalizeConfig(config = {}) {
+    const normalized = { ...config };
+    if (typeof normalized.title !== "string" || !normalized.title.trim()) {
+      normalized.title = null;
+    }
+    if (typeof normalized.highlight !== "string" || !normalized.highlight.trim()) {
+      normalized.highlight = DEFAULT_BANNER_HIGHLIGHT;
+    }
+    if (typeof normalized.body !== "string" || !normalized.body.trim()) {
+      normalized.body = DEFAULT_BANNER_BODY;
+    }
+    return normalized;
+  }
+
+  return {
+    register(nodeId, config) {
+      const key = normalizeId(nodeId);
+      if (!key) return;
+      registry.set(key, normalizeConfig(config));
+    },
+    resolve(nodeId, fallbackTitle) {
+      const key = normalizeId(nodeId);
+      const stored = key ? registry.get(key) : null;
+      const base = stored ? { ...stored } : normalizeConfig();
+      if (!base.title) {
+        base.title = fallbackTitle ?? nodeId ?? "";
+      }
+      return base;
+    },
+  };
+})();
+
+NODE_LIBRARY.forEach(config => {
+  if (!config || config.decorative) return;
+  const label = config.label ?? config.id;
+  connectionBannerModule.register(config.id, {
+    title: label,
+    body: `${label} timeline link stabilized.`,
+  });
+});
+
 const INITIAL_NODE_IDS = [
   "young evelyn",
   "bagle",
@@ -910,6 +962,10 @@ const loadingStatus = document.getElementById("loadingStatus");
 const loadingBar = document.getElementById("loadingBar");
 const loadingProgress = document.getElementById("loadingProgress");
 const interactionHint = document.getElementById("interactionHint");
+const hudBanner = document.querySelector(".hud__banner");
+const hudBannerNode = hudBanner?.querySelector(".hud__banner-node") ?? null;
+const hudBannerStatus = hudBanner?.querySelector(".hud__banner-status") ?? null;
+const hudBannerBody = hudBanner?.querySelector(".hud__banner-body") ?? null;
 
 let width = 800;
 let height = 800;
@@ -924,6 +980,11 @@ const tickThrottleMap = new Map();
 const mediaPreloadCache = new Map();
 let interactionHintTimerId = null;
 let pendingInteractionHint = false;
+let hudBannerTimer = null;
+
+if (hudBanner) {
+  hudBanner.setAttribute("aria-hidden", "true");
+}
 
 backgroundSvg.attr("preserveAspectRatio", "xMidYMid meet");
 
@@ -1374,6 +1435,44 @@ function triggerScrollFeedback(delta) {
   }
 }
 
+function hideHudBanner() {
+  if (!hudBanner) return;
+  if (hudBannerTimer) {
+    clearTimeout(hudBannerTimer);
+    hudBannerTimer = null;
+  }
+  hudBanner.classList.remove("hud__banner--visible");
+  hudBanner.setAttribute("aria-hidden", "true");
+}
+
+function displayHudBanner(nodeId, fallbackLabel) {
+  if (!hudBanner) return;
+  const resolved = connectionBannerModule.resolve(nodeId, fallbackLabel);
+  if (hudBannerNode) {
+    hudBannerNode.textContent = resolved.title ?? fallbackLabel ?? nodeId ?? "";
+  }
+  if (hudBannerStatus) {
+    hudBannerStatus.textContent = resolved.highlight ?? DEFAULT_BANNER_HIGHLIGHT;
+  }
+  if (hudBannerBody) {
+    hudBannerBody.textContent = resolved.body ?? DEFAULT_BANNER_BODY;
+  }
+  hudBanner.classList.add("hud__banner--visible");
+  hudBanner.setAttribute("aria-hidden", "false");
+  if (hudBannerTimer) {
+    clearTimeout(hudBannerTimer);
+  }
+  hudBannerTimer = window.setTimeout(() => {
+    hideHudBanner();
+  }, HUD_BANNER_DISPLAY_MS);
+}
+
+function showConnectionBanner(nodeData) {
+  if (!nodeData || nodeData.decorative) return;
+  const label = nodeData.label ?? nodeData.id;
+  displayHudBanner(nodeData.id, label);
+}
+
 function getNodeId(nodeRef) {
   return typeof nodeRef === "object" ? nodeRef.id : nodeRef;
 }
@@ -1717,13 +1816,14 @@ function ensureNode(targetId) {
 }
 
 function ensureLinkBetween(sourceId, targetId) {
-  if (!sourceId || !targetId) return;
+  if (!sourceId || !targetId) return false;
+  if (sourceId === targetId) return false;
   const exists = links.some(
     l => getNodeId(l.source) === sourceId && getNodeId(l.target) === targetId
   );
-  if (!exists) {
-    links.push({ source: sourceId, target: targetId });
-  }
+  if (exists) return false;
+  links.push({ source: sourceId, target: targetId });
+  return true;
 }
 
 function restoreDecorativeLinks() {
@@ -1749,6 +1849,7 @@ function resetProgressState() {
   visitedInteractiveNodes.clear();
   celebrationTriggered = false;
   restoreDecorativeLinks();
+  hideHudBanner();
   refreshGraph();
   if (typeof console !== "undefined" && typeof console.info === "function") {
     console.info("[Session] Progress state reset after inactivity.");
@@ -1772,10 +1873,14 @@ function openInteractiveNode(targetId) {
   markInteraction();
   const target = ensureNode(targetId);
   if (!target) return;
+  let createdLink = false;
   if (activeNode) {
-    ensureLinkBetween(activeNode.id, target.id);
+    createdLink = ensureLinkBetween(activeNode.id, target.id);
   }
   refreshGraph();
+  if (createdLink) {
+    showConnectionBanner(target);
+  }
   showPopupForNode(target);
 }
 
@@ -1834,6 +1939,11 @@ function maybeTriggerCelebration() {
   startCelebrationSequence();
 }
 
+function triggerAdminCelebration() {
+  if (celebrationAnimating || isCelebrationOpen()) return;
+  startCelebrationSequence();
+}
+
 function startCelebrationSequence() {
   celebrationAnimating = true;
   hidePopup();
@@ -1863,6 +1973,7 @@ function setCelebrationDismissEnabled(enabled) {
 
 function openCelebrationOverlay() {
   if (!celebrationOverlay) return;
+  hideHudBanner();
   celebrationOverlay.classList.add("open");
   celebrationOverlay.setAttribute("aria-hidden", "false");
   lockSceneContainer();
@@ -2147,6 +2258,11 @@ document.addEventListener("keydown", event => {
     }
     return;
   }
+  if (typeof event.key === "string" && event.key.toLowerCase() === "o") {
+    event.preventDefault();
+    triggerAdminCelebration();
+    return;
+  }
   if (isCelebrationOpen()) return;
   if (!popup.classList.contains("open")) return;
   if (event.key.toLowerCase() === "i") {
@@ -2266,5 +2382,12 @@ preloadAllMediaSources()
 refreshGraph();
 simulation.on("tick", ticked);
 syncRadarToContainer();
+
+if (typeof window !== "undefined") {
+  window.MultiverseConnectionBanner = {
+    register: connectionBannerModule.register,
+    resolve: connectionBannerModule.resolve,
+  };
+}
 
 window.hidePopup = hidePopup;
