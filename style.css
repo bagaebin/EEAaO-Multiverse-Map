@@ -57,12 +57,11 @@ body.body-scroll-locked {
   border: 1px solid rgba(63, 242, 255, 0.35);
   background: rgba(4, 20, 58, 0.88);
   box-shadow: 0 0 40px rgba(10, 159, 255, 0.25);
-  border-radius: 18px;
 }
 
 .loading-overlay__spinner {
-  width: 52px;
-  height: 52px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 3px solid rgba(63, 242, 255, 0.2);
   border-top-color: var(--accent);
@@ -79,7 +78,7 @@ body.body-scroll-locked {
 
 .loading-overlay__status {
   margin: 0;
-  font-size: 12px;
+  font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-primary);
@@ -90,8 +89,8 @@ body.body-scroll-locked {
   width: 100%;
   height: 8px;
   border-radius: 999px;
-  border: 1px solid rgba(63, 242, 255, 0.4);
-  background: rgba(11, 32, 69, 0.7);
+  border: 1px var(--accent-strong);
+  background: rgba(11, 32, 69, 0.2);
   overflow: hidden;
 }
 
@@ -220,7 +219,7 @@ circle.node--background {
   position: absolute;
   top: 160px;
   right: 48px;
-  background: rgba(7, 18, 32, 0.85);
+  background: rgba(7, 18, 32, 0.4);
   border: 1px solid var(--accent-soft);
   padding: 12px 16px;
   width: 360px;
@@ -238,7 +237,6 @@ circle.node--background {
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  background: rgba(7, 18, 32, 0.9);
   backdrop-filter: blur(6px);
 }
 
@@ -423,7 +421,6 @@ text.label.label--decorative {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* border-radius: 16px; */
   border: 1px solid rgba(63, 242, 255, 0.45);
   box-shadow: 0 40px 70px rgba(3, 12, 26, 0.6);
   background: rgba(4, 12, 24, 0.95);
@@ -444,6 +441,8 @@ text.label.label--decorative {
   justify-content: center;
   max-width: 70vw;
   max-height: 70vh;
+  vertical-align: top;
+  line-height: 0
 }
 
 .popup video,
@@ -452,7 +451,6 @@ text.label.label--decorative {
   max-height: 70vh;
   width: auto;
   height: auto;
-  /* border-radius: 12px; */
   display: none;
   object-fit: contain;
   background: #020409;
@@ -466,7 +464,6 @@ text.label.label--decorative {
   padding: 32px;
   min-width: 320px;
   min-height: 180px;
-  border-radius: 12px;
   border: 1px dashed rgba(63, 242, 255, 0.35);
   color: var(--text-secondary);
   letter-spacing: 0.04em;
@@ -548,17 +545,16 @@ text.label.label--decorative {
   background: rgba(3, 12, 42, 0.92);
   border: 1px solid rgba(63, 242, 255, 0.45);
   box-shadow: 0 0 36px rgba(63, 242, 255, 0.35);
-  padding: 32px 28px 28px;
+  padding: 16px 12px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
-  border-radius: 18px;
+  gap: 12px;
 }
 
 .celebration__title {
   margin: 0;
-  font-size: clamp(20px, 2.8vw, 28px);
+  font-size: clamp(16px, 2vw, 20px);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
@@ -592,7 +588,6 @@ text.label.label--decorative {
   width: 100%;
   max-height: min(70vh, 480px);
   background: rgba(0, 0, 0, 0.8);
-  border-radius: 12px;
   box-shadow: 0 0 24px rgba(63, 242, 255, 0.2);
 }
 
@@ -603,11 +598,10 @@ text.label.label--decorative {
 
 .celebration__actions button {
   padding: 10px 20px;
-  border-radius: 999px;
   border: 1px solid rgba(63, 242, 255, 0.6);
   background: rgba(10, 159, 255, 0.15);
   color: var(--text-primary);
-  font-size: 13px;
+  font-size: 10px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
