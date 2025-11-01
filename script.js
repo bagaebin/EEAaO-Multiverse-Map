@@ -7,23 +7,18 @@ const NODE_LIBRARY = new Map([
       video: { src: "videos/01_Young Evelyn.mp4", duration: 5 },
       hotspots: [
         {
-          timeRange: [0.8, 1.6],
-          rect: { x: 0.42, y: 0.32, w: 0.22, h: 0.3 },
-          target: "bagle",
-        },
-        {
-          timeRange: [0.903, 1.903],
-          rect: { x: 0.3733, y: 0.7784, w: 0.0679, h: 0.1299 },
-          target: "actor",
-        },
-        {
-          timeRange: [1.806, 2.006],
-          rect: { x: 0.0225, y: 0.3938, w: 0.1107, h: 0.2379 },
+          timeRange: [1.774, 2.274],
+          rect: { x: 0.0021, y: 0.435, w: 0.352, h: 0.5548 },
           target: "sign spinner",
         },
         {
-          timeRange: [3.11, 4.31],
-          rect: { x: 0.367, y: 0.3757, w: 0.0503, h: 0.0771 },
+          timeRange: [2.764, 3.264],
+          rect: { x: 0.5496, y: 0.6763, w: 0.1029, h: 0.1873 },
+          target: "actor",
+        },
+        {
+          timeRange: [4.5, 5],
+          rect: { x: 0.4467, y: 0.3701, w: 0.1482, h: 0.1693 },
           target: "irs office",
         },
       ],
@@ -37,14 +32,19 @@ const NODE_LIBRARY = new Map([
       video: { src: "videos/02_Bagle.mp4", duration: 5 },
       hotspots: [
         {
-          timeRange: [2.957, 4.157],
-          rect: { x: 0.3482, y: 0.3236, w: 0.0931, h: 0.1629 },
-          target: "young evelyn",
+          timeRange: [0.481, 0.981],
+          rect: { x: 0.3335, y: 0.5503, w: 0.3005, h: 0.4503 },
+          target: "soldier",
         },
         {
-          timeRange: [0.5, 1.5],
-          rect: { x: 0.58, y: 0.26, w: 0.2, h: 0.32 },
-          target: "actor",
+          timeRange: [0.395, 0.895],
+          rect: { x: 0.7411, y: 0.6583, w: 0.1112, h: 0.1117 },
+          target: "grape",
+        },
+        {
+          timeRange: [4.108, 4.608],
+          rect: { x: 0.5825, y: 0.4386, w: 0.3561, h: 0.5259 },
+          target: "statue",
         },
       ],
     },
@@ -57,19 +57,19 @@ const NODE_LIBRARY = new Map([
       video: { src: "videos/03_Actor.mp4", duration: 5 },
       hotspots: [
         {
-          timeRange: [1.5, 2.2],
-          rect: { x: 0.5, y: 0.3, w: 0.22, h: 0.3 },
-          target: "singer",
+          timeRange: [2.229, 2.429],
+          rect: { x: 0.8234, y: 0.5034, w: 0.1317, h: 0.2954 },
+          target: "young evelyn",
         },
         {
-          timeRange: [2.286, 3.486],
-          rect: { x: 0.45, y: 0.5709, w: 0.1434, h: 0.3656 },
-          target: "bagle",
+          timeRange: [3.681, 4.181],
+          rect: { x: 0.4652, y: 0.824, w: 0.0967, h: 0.1765 },
+          target: "pottery",
         },
         {
-          timeRange: [3.8, 4.6],
-          rect: { x: 0.14, y: 0.28, w: 0.16, h: 0.25 },
-          target: "irs office",
+          timeRange: [4.5, 5],
+          rect: { x: 0.4879, y: 0.3125, w: 0.0391, h: 0.0829 },
+          target: "animation",
         },
       ],
     },
@@ -82,14 +82,19 @@ const NODE_LIBRARY = new Map([
       video: { src: "videos/04_IRS Office.mp4", duration: 5 },
       hotspots: [
         {
-          timeRange: [2.6, 3.2],
-          rect: { x: 0.55, y: 0.42, w: 0.22, h: 0.24 },
-          target: "sign spinner",
+          timeRange: [4.5, 5],
+          rect: { x: 0.0082, y: 0.2441, w: 0.4487, h: 0.2666 },
+          target: "actor",
         },
         {
-          timeRange: [2.186, 3.386],
-          rect: { x: 0.8527, y: 0.5255, w: 0.0566, h: 0.1078 },
-          target: "bagle",
+          timeRange: [4.5, 5],
+          rect: { x: 0.564, y: 0.3017, w: 0.4343, h: 0.3927 },
+          target: "actor",
+        },
+        {
+          timeRange: [4.5, 5],
+          rect: { x: 0.0082, y: 0.4206, w: 0.3561, h: 0.5548 },
+          target: "jail",
         },
       ],
     },
@@ -102,14 +107,14 @@ const NODE_LIBRARY = new Map([
       video: { src: "videos/05_Singer.mp4", duration: 5 },
       hotspots: [
         {
-          timeRange: [2.1, 2.7],
-          rect: { x: 0.32, y: 0.26, w: 0.28, h: 0.34 },
-          target: "young evelyn",
+          timeRange: [4.5, 5],
+          rect: { x: 0.0288, y: 0.7052, w: 0.9448, h: 0.263 },
+          target: "actor",
         },
         {
-          timeRange: [4.029, 5.229],
-          rect: { x: 0.4312, y: 0.0073, w: 0.0717, h: 0.1188 },
-          target: "bagle",
+          timeRange: [1.17, 1.37],
+          rect: { x: 0.3438, y: 0.0315, w: 0.3252, h: 0.3746 },
+          target: "grape",
         },
       ],
     },
@@ -120,7 +125,23 @@ const NODE_LIBRARY = new Map([
       id: "pottery",
       label: "pottery",
       video: { src: "videos/06_pottery.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [0.1, 0.6],
+          rect: { x: 0.6361, y: 0.1972, w: 0.2244, h: 0.2774 },
+          target: "youtube",
+        },
+        {
+          timeRange: [4.5, 5],
+          rect: { x: 0.1009, y: 0.6259, w: 0.2285, h: 0.3314 },
+          target: "lab",
+        },
+        {
+          timeRange: [4.5, 5],
+          rect: { x: 0.0226, y: 0.1396, w: 0.1997, h: 0.5007 },
+          target: "jail",
+        },
+      ],
     },
   ],
   [
@@ -131,9 +152,19 @@ const NODE_LIBRARY = new Map([
       video: { src: "videos/07_Sign Spinner.mp4", duration: 5 },
       hotspots: [
         {
-          timeRange: [1.0, 1.6],
-          rect: { x: 0.4, y: 0.35, w: 0.24, h: 0.3 },
-          target: "bagle",
+          timeRange: [0, 0.1],
+          rect: { x: 0.2923, y: 0.0171, w: 0.4096, h: 0.3134 },
+          target: "singer",
+        },
+        {
+          timeRange: [2.389, 2.589],
+          rect: { x: 0.4076, y: 0.6475, w: 0.2635, h: 0.2774 },
+          target: "slaughterhouse",
+        },
+        {
+          timeRange: [3.989, 4.189],
+          rect: { x: 0.7658, y: 0.6079, w: 0.14, h: 0.2882 },
+          target: "young evelyn",
         },
       ],
     },
@@ -144,7 +175,28 @@ const NODE_LIBRARY = new Map([
       id: "cat",
       label: "cat",
       video: { src: "videos/08_cat.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [0.264, 0.464],
+          rect: { x: 0.4652, y: 0.3846, w: 0.0823, h: 0.1297 },
+          target: "cat",
+        },
+        {
+          timeRange: [2.958, 3.658],
+          rect: { x: 0.6669, y: 0.435, w: 0.1688, h: 0.3206 },
+          target: "jail",
+        },
+        {
+          timeRange: [2.958, 3.658],
+          rect: { x: 0.2079, y: 0.4242, w: 0.1647, h: 0.5115 },
+          target: "jail",
+        },
+        {
+          timeRange: [4.615, 4.815],
+          rect: { x: 0, y: 0.2945, w: 0.9942, h: 0.1585 },
+          target: "sign spinner",
+        },
+      ],
     },
   ],
   [
@@ -153,7 +205,23 @@ const NODE_LIBRARY = new Map([
       id: "slaughterhouse",
       label: "slaughterhouse",
       video: { src: "videos/09_slaughterhouse.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [3.869, 4.369],
+          rect: { x: 0.072, y: 0.3305, w: 0.3541, h: 0.634 },
+          target: "bagle",
+        },
+        {
+          timeRange: [3.869, 4.369],
+          rect: { x: 0.5455, y: 0.3701, w: 0.3396, h: 0.5764 },
+          target: "bagle",
+        },
+        {
+          timeRange: [2.622, 3.122],
+          rect: { x: 0.4179, y: 0.5142, w: 0.1564, h: 0.4215 },
+          target: "monster",
+        },
+      ],
     },
   ],
   [
@@ -162,7 +230,18 @@ const NODE_LIBRARY = new Map([
       id: "tinder",
       label: "tinder",
       video: { src: "videos/10_tinder.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [1.096, 1.596],
+          rect: { x: 0.3993, y: 0.2696, w: 0.1976, h: 0.1546 },
+          target: "monster",
+        },
+        {
+          timeRange: [2.952, 3.452],
+          rect: { x: 0.3561, y: 0.018, w: 0.2964, h: 0.0935 },
+          target: "youtube",
+        },
+      ],
     },
   ],
   [
@@ -171,7 +250,23 @@ const NODE_LIBRARY = new Map([
       id: "macho",
       label: "macho",
       video: { src: "videos/11_macho.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [2.309, 2.809],
+          rect: { x: 0.2532, y: 0.1108, w: 0.5064, h: 0.4899 },
+          target: "bagle",
+        },
+        {
+          timeRange: [3.886, 4.386],
+          rect: { x: 0.4487, y: 0.0135, w: 0.1359, h: 0.2738 },
+          target: "lab",
+        },
+        {
+          timeRange: [3.886, 4.386],
+          rect: { x: 0.2532, y: 0.4134, w: 0.4982, h: 0.245 },
+          target: "tinder",
+        },
+      ],
     },
   ],
   [
@@ -180,7 +275,28 @@ const NODE_LIBRARY = new Map([
       id: "lab",
       label: "lab",
       video: { src: "videos/12_lab.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [1.438, 1.938],
+          rect: { x: 0.0206, y: 0.6295, w: 0.9572, h: 0.335 },
+          target: "slaughterhouse",
+        },
+        {
+          timeRange: [3.015, 3.515],
+          rect: { x: 0.0494, y: 0.4926, w: 0.2367, h: 0.2378 },
+          target: "statue",
+        },
+        {
+          timeRange: [3.015, 3.515],
+          rect: { x: 0.7225, y: 0.4638, w: 0.2264, h: 0.2846 },
+          target: "statue",
+        },
+        {
+          timeRange: [3.015, 3.215],
+          rect: { x: 0.6484, y: 0.2224, w: 0.1585, h: 0.2558 },
+          target: "youtube",
+        },
+      ],
     },
   ],
   [
@@ -189,7 +305,18 @@ const NODE_LIBRARY = new Map([
       id: "monster",
       label: "monster",
       video: { src: "videos/13_monster.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [4.212, 4.912],
+          rect: { x: 0.459, y: 0.0135, w: 0.105, h: 0.3422 },
+          target: "cat",
+        },
+        {
+          timeRange: [2.315, 2.515],
+          rect: { x: 0.6669, y: 0.4854, w: 0.3294, h: 0.2594 },
+          target: "lab",
+        },
+      ],
     },
   ],
   [
@@ -198,7 +325,18 @@ const NODE_LIBRARY = new Map([
       id: "animation",
       label: "animation",
       video: { src: "videos/14_animation.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [3.305, 3.805],
+          rect: { x: 0.0926, y: 0.0315, w: 0.8213, h: 0.4251 },
+          target: "cat",
+        },
+        {
+          timeRange: [4.5, 5],
+          rect: { x: 0.6587, y: 0.2405, w: 0.0576, h: 0.1693 },
+          target: "actor",
+        },
+      ],
     },
   ],
   [
@@ -207,7 +345,23 @@ const NODE_LIBRARY = new Map([
       id: "youtube",
       label: "youtube",
       video: { src: "videos/15_youtube.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [0.247, 0.747],
+          rect: { x: 0.1688, y: 0.0531, w: 0.6628, h: 0.2522 },
+          target: "bagle",
+        },
+        {
+          timeRange: [4.222, 4.722],
+          rect: { x: 0.6567, y: 0.1108, w: 0.2779, h: 0.353 },
+          target: "pottery",
+        },
+        {
+          timeRange: [3.157, 3.657],
+          rect: { x: 0.1585, y: 0.381, w: 0.2758, h: 0.6088 },
+          target: "actor",
+        },
+      ],
     },
   ],
   [
@@ -216,7 +370,18 @@ const NODE_LIBRARY = new Map([
       id: "soldier",
       label: "soldier",
       video: { src: "videos/16_soldier.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [0.1, 0.6],
+          rect: { x: 0.3726, y: 0.208, w: 0.2491, h: 0.2414 },
+          target: "tinder",
+        },
+        {
+          timeRange: [4.504, 5],
+          rect: { x: 0.2347, y: 0.0099, w: 0.5496, h: 0.3134 },
+          target: "pottery",
+        },
+      ],
     },
   ],
   [
@@ -225,7 +390,18 @@ const NODE_LIBRARY = new Map([
       id: "hotdog fingers",
       label: "hotdog fingers",
       video: { src: "videos/17_hotdog fingers.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [2.582, 2.782],
+          rect: { x: 0.7369, y: 0.1972, w: 0.175, h: 0.3783 },
+          target: "irs office",
+        },
+        {
+          timeRange: [4.365, 4.565],
+          rect: { x: 0.4261, y: 0.0207, w: 0.2408, h: 0.1297 },
+          target: "macho",
+        },
+      ],
     },
   ],
   [
@@ -234,7 +410,23 @@ const NODE_LIBRARY = new Map([
       id: "jail",
       label: "jail",
       video: { src: "videos/18_jail.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [0.1, 0.6],
+          rect: { x: 0.3643, y: 0.1288, w: 0.2573, h: 0.1405 },
+          target: "singer",
+        },
+        {
+          timeRange: [2.383, 2.883],
+          rect: { x: 0.3396, y: 0.417, w: 0.1606, h: 0.3422 },
+          target: "hotdog fingers",
+        },
+        {
+          timeRange: [3.977, 4.477],
+          rect: { x: 0.2594, y: 0.2369, w: 0.3108, h: 0.4071 },
+          target: "irs office",
+        },
+      ],
     },
   ],
   [
@@ -243,7 +435,23 @@ const NODE_LIBRARY = new Map([
       id: "statue",
       label: "statue",
       video: { src: "videos/19_statue.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [0.1, 0.6],
+          rect: { x: 0.4302, y: 0.0099, w: 0.1832, h: 0.1729 },
+          target: "bagle",
+        },
+        {
+          timeRange: [3.767, 4.267],
+          rect: { x: 0.282, y: 0.4602, w: 0.2511, h: 0.5368 },
+          target: "grape",
+        },
+        {
+          timeRange: [3.767, 4.267],
+          rect: { x: 0.6855, y: 0.6403, w: 0.0679, h: 0.1081 },
+          target: "pottery",
+        },
+      ],
     },
   ],
   [
@@ -252,7 +460,18 @@ const NODE_LIBRARY = new Map([
       id: "grape",
       label: "grape",
       video: { src: "videos/20_grape.mp4", duration: 5 },
-      hotspots: [],
+      hotspots: [
+        {
+          timeRange: [4.143, 4.643],
+          rect: { x: 0.1194, y: 0.6187, w: 0.3582, h: 0.371 },
+          target: "pottery",
+        },
+        {
+          timeRange: [4.143, 4.643],
+          rect: { x: 0.3973, y: 0.1468, w: 0.1647, h: 0.7493 },
+          target: "monster",
+        },
+      ],
     },
   ],
   [
