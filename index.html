@@ -7,6 +7,24 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="loadingOverlay" class="loading-overlay" role="alert" aria-live="assertive">
+    <div class="loading-overlay__content">
+      <div class="loading-overlay__spinner" aria-hidden="true"></div>
+      <div class="loading-overlay__details">
+        <p id="loadingStatus" class="loading-overlay__status">멀티버스 초기화 중... 0%</p>
+        <div
+          id="loadingProgress"
+          class="loading-overlay__progress"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <span id="loadingBar" class="loading-overlay__progress-bar"></span>
+        </div>
+      </div>
+    </div>
+  </div>
   <svg class="background-network" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet"></svg>
   <div class="scene-container">
     <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
