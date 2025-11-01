@@ -606,6 +606,7 @@ const HEART_ANIMATION_DURATION = 2000;
 const DECORATIVE_CONNECTION_SPAN = 2;
 const INACTIVITY_RESET_MS = 60 * 1000;
 const INACTIVITY_CHECK_INTERVAL = 5000;
+const INTERACTION_HINT_DURATION = 5000;
 
 function cloneNodeConfig(config = {}) {
   return {
@@ -689,6 +690,7 @@ const loadingOverlay = document.getElementById("loadingOverlay");
 const loadingStatus = document.getElementById("loadingStatus");
 const loadingBar = document.getElementById("loadingBar");
 const loadingProgress = document.getElementById("loadingProgress");
+const interactionHint = document.getElementById("interactionHint");
 
 let width = 800;
 let height = 800;
@@ -701,6 +703,8 @@ let tickBuffer = null;
 let tickBufferPromise = null;
 const tickThrottleMap = new Map();
 const mediaPreloadCache = new Map();
+let interactionHintTimerId = null;
+let pendingInteractionHint = false;
 
 backgroundSvg.attr("preserveAspectRatio", "xMidYMid meet");
 
@@ -943,6 +947,35 @@ function hideLoadingOverlay() {
   setTimeout(() => {
     loadingOverlay.remove();
   }, 600);
+}
+
+function hideInteractionHint() {
+  if (interactionHintTimerId) {
+    clearTimeout(interactionHintTimerId);
+    interactionHintTimerId = null;
+  }
+  if (!interactionHint) return;
+  interactionHint.classList.remove("hud__panel--visible");
+  interactionHint.setAttribute("aria-hidden", "true");
+}
+
+function showInteractionHint() {
+  if (!interactionHint) return;
+  if (interactionHintTimerId) {
+    clearTimeout(interactionHintTimerId);
+  }
+  pendingInteractionHint = false;
+  interactionHint.classList.add("hud__panel--visible");
+  interactionHint.setAttribute("aria-hidden", "false");
+  interactionHintTimerId = setTimeout(() => {
+    interactionHintTimerId = null;
+    hideInteractionHint();
+  }, INTERACTION_HINT_DURATION);
+}
+
+function queueInteractionHint() {
+  if (!interactionHint) return;
+  pendingInteractionHint = true;
 }
 
 function preloadVideoSource(src) {
@@ -1501,6 +1534,8 @@ function resetProgressState() {
   if (typeof console !== "undefined" && typeof console.info === "function") {
     console.info("[Session] Progress state reset after inactivity.");
   }
+  hideInteractionHint();
+  queueInteractionHint();
   markInteraction();
 }
 
@@ -1797,6 +1832,13 @@ if (hotspotLayer) {
   });
 }
 
+window.addEventListener("mousemove", () => {
+  if (pendingInteractionHint) {
+    showInteractionHint();
+  }
+  markInteraction();
+});
+
 window.addEventListener("mousemove", event => {
   if (!inspectorOn || !dragStart || !draftBox) return;
   const rect = hotspotLayer.getBoundingClientRect();
@@ -1992,9 +2034,15 @@ window.addEventListener("resize", () => {
   window.addEventListener(eventName, markInteraction, options);
 });
 
-preloadAllMediaSources().finally(() => {
-  startInactivityWatcher();
-});
+preloadAllMediaSources()
+  .then(() => {
+    setTimeout(() => {
+      showInteractionHint();
+    }, 350);
+  })
+  .finally(() => {
+    startInactivityWatcher();
+  });
 
 refreshGraph();
 simulation.on("tick", ticked);

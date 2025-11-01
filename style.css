@@ -183,6 +183,47 @@ circle.node--background {
   box-shadow: 0 0 30px rgba(63, 242, 255, 0.15);
 }
 
+.hud__panel--hint {
+  position: fixed;
+  top: auto;
+  bottom: 32px;
+  right: 32px;
+  width: 240px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background: rgba(7, 18, 32, 0.9);
+  backdrop-filter: blur(6px);
+}
+
+.hud__panel--hint.hud__panel--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hud__hint-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+
+.hud__hint-list li {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  color: var(--text-secondary);
+}
+
+.hud__hint-list li span {
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
 .hud__panel-title {
   font-size: 10px;
   color: var(--text-secondary);
