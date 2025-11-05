@@ -53,9 +53,9 @@ body.body-scroll-locked {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 24px 32px;
+  padding: 24px 24px;
   border: 1px solid rgba(63, 242, 255, 0.35);
-  background: rgba(4, 20, 58, 0.88);
+  background: rgba(4, 20, 58, 0.2);
   box-shadow: 0 0 40px rgba(10, 159, 255, 0.25);
 }
 

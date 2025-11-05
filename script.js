@@ -871,7 +871,7 @@ const INITIAL_NODE_IDS = [
   "Ghost 32",
 ];
 
-const CELEBRATION_VIDEO_SRC = "videos/I love you_speech.mp4";
+const CELEBRATION_VIDEO_SRC = "/videos/I love you_connected_voice inluded.mp4";
 const DONUT_ANIMATION_DURATION = 1000;
 const HEART_ANIMATION_DURATION = 2000;
 const DECORATIVE_CONNECTION_SPAN = 2;
