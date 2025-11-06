@@ -935,6 +935,8 @@ let celebrationTriggered = false;
 let celebrationAnimating = false;
 let celebrationHoldingNodes = false;
 let celebrationAnimationToken = 0;
+let celebrationVideoCompletedOnce = false;
+let celebrationStoredLinks = null;
 let lastInteractionAt = performance.now();
 let inactivityTimerId = null;
 
@@ -947,16 +949,18 @@ const BODY_LOCK_CLASS = "body-scroll-locked";
 const SCROLL_GHOST_HEIGHT_VAR = "--scroll-ghost-height";
 const VIRTUAL_SCROLL_MULTIPLIER = 1;
 const TICK_AUDIO_SRC = "audios/tick.wav";
-const TICK_VOLUME = 0.8;
+const TICK_VOLUME = 0.56;
 const SCROLL_TICK_INTERVAL = 90;
 const CLICK_TICK_INTERVAL = 60;
 const SCROLL_DELTA_THRESHOLD = 2;
+const SCROLL_VELOCITY_NORMALIZER = 8;
 
 const celebrationOverlay = document.getElementById("celebration");
 const celebrationVideo = document.getElementById("celebrationVideo");
 const celebrationCloseBtn = document.getElementById("celebrationClose");
 const celebrationDismissBtn = document.getElementById("celebrationDismiss");
 const celebrationReplayBtn = document.getElementById("celebrationReplay");
+const celebrationOverlayLayer = document.getElementById("celebrationOverlayLayer");
 const loadingOverlay = document.getElementById("loadingOverlay");
 const loadingStatus = document.getElementById("loadingStatus");
 const loadingBar = document.getElementById("loadingBar");
@@ -981,6 +985,7 @@ const mediaPreloadCache = new Map();
 let interactionHintTimerId = null;
 let pendingInteractionHint = false;
 let hudBannerTimer = null;
+let lastScrollFeedbackTime = performance.now();
 
 if (hudBanner) {
   hudBanner.setAttribute("aria-hidden", "true");
@@ -1423,14 +1428,18 @@ function triggerScrollFeedback(delta) {
   const magnitude = Math.abs(delta);
   if (magnitude < SCROLL_DELTA_THRESHOLD) return;
   const normalized = Math.min(1, magnitude / 180);
-  const playbackRate = 0.8 + normalized * 0.5;
+  const now = performance.now();
+  const elapsed = Math.max(now - lastScrollFeedbackTime, 1);
+  const velocity = Math.min(1, (magnitude / elapsed) / SCROLL_VELOCITY_NORMALIZER);
+  const playbackRate = 0.65 + normalized * 0.35 + velocity * 0.65;
+  lastScrollFeedbackTime = now;
   playTick({
     playbackRate,
     throttleKey: "scroll",
     throttleMs: SCROLL_TICK_INTERVAL,
     skipIfLoading: false,
   });
-  if (normalized > 0.45) {
+  if (normalized + velocity > 0.9) {
     triggerVibration(8);
   }
 }
@@ -1843,12 +1852,16 @@ function resetProgressState() {
     celebrationAnimationToken += 1;
     celebrationAnimating = false;
     celebrationHoldingNodes = false;
+    restoreCelebrationLinks();
     releaseNodesAfterCelebration();
+    celebrationVideoCompletedOnce = false;
+    hideCelebrationOverlayLayer();
   }
 
   visitedInteractiveNodes.clear();
   celebrationTriggered = false;
   restoreDecorativeLinks();
+  celebrationStoredLinks = null;
   hideHudBanner();
   refreshGraph();
   if (typeof console !== "undefined" && typeof console.info === "function") {
@@ -1950,6 +1963,8 @@ function startCelebrationSequence() {
   pauseSimulationForCelebration();
   const runId = ++celebrationAnimationToken;
   setCelebrationDismissEnabled(false);
+  applyCelebrationHeartLinks();
+  refreshGraph();
   openCelebrationOverlay();
 
   const donutTargets = computeDonutTargets();
@@ -1965,10 +1980,75 @@ function startCelebrationSequence() {
 }
 
 function setCelebrationDismissEnabled(enabled) {
-  [celebrationCloseBtn, celebrationDismissBtn].forEach(btn => {
+  [celebrationCloseBtn, celebrationDismissBtn, celebrationReplayBtn].forEach(btn => {
     if (!btn) return;
     btn.disabled = !enabled;
   });
+}
+
+function hideCelebrationOverlayLayer() {
+  if (!celebrationOverlayLayer) return;
+  celebrationOverlayLayer.classList.remove("celebration__overlay--visible");
+  celebrationOverlayLayer.setAttribute("aria-hidden", "true");
+}
+
+function showCelebrationOverlayLayer() {
+  if (!celebrationOverlayLayer) return;
+  celebrationOverlayLayer.classList.add("celebration__overlay--visible");
+  celebrationOverlayLayer.setAttribute("aria-hidden", "false");
+}
+
+function handleCelebrationVideoEnded() {
+  if (!celebrationVideo || !isCelebrationOpen()) return;
+  if (celebrationVideoCompletedOnce) return;
+  celebrationVideoCompletedOnce = true;
+  celebrationVideo.loop = true;
+  celebrationVideo.muted = true;
+  celebrationVideo.play().catch(() => {});
+  showCelebrationOverlayLayer();
+}
+
+function cloneLinkDescriptor(link) {
+  return {
+    source: getNodeId(link.source),
+    target: getNodeId(link.target),
+  };
+}
+
+function isDecorativeLinkDescriptor(link) {
+  const sourceNode = nodes.find(n => n.id === link.source);
+  const targetNode = nodes.find(n => n.id === link.target);
+  return Boolean(sourceNode?.decorative) || Boolean(targetNode?.decorative);
+}
+
+function applyCelebrationHeartLinks() {
+  if (celebrationStoredLinks) return;
+  celebrationStoredLinks = links.map(cloneLinkDescriptor);
+  const interactiveNodes = nodes.filter(n => !n.decorative);
+  if (!interactiveNodes.length) return;
+  const decorativeLinks = celebrationStoredLinks.filter(isDecorativeLinkDescriptor);
+  const heartLinks = [];
+  interactiveNodes.forEach((nodeItem, index) => {
+    const nextNode = interactiveNodes[(index + 1) % interactiveNodes.length];
+    if (!nextNode) return;
+    heartLinks.push({ source: nodeItem.id, target: nextNode.id });
+  });
+  links.length = 0;
+  decorativeLinks.forEach(link => {
+    links.push({ source: link.source, target: link.target });
+  });
+  heartLinks.forEach(link => {
+    links.push({ source: link.source, target: link.target });
+  });
+}
+
+function restoreCelebrationLinks() {
+  if (!celebrationStoredLinks) return;
+  links.length = 0;
+  celebrationStoredLinks.forEach(link => {
+    links.push({ source: link.source, target: link.target });
+  });
+  celebrationStoredLinks = null;
 }
 
 function openCelebrationOverlay() {
@@ -1977,18 +2057,26 @@ function openCelebrationOverlay() {
   celebrationOverlay.classList.add("open");
   celebrationOverlay.setAttribute("aria-hidden", "false");
   lockSceneContainer();
+  celebrationVideoCompletedOnce = false;
+  hideCelebrationOverlayLayer();
   if (celebrationVideo) {
     if (CELEBRATION_VIDEO_SRC && celebrationVideo.src !== CELEBRATION_VIDEO_SRC) {
       celebrationVideo.src = CELEBRATION_VIDEO_SRC;
       celebrationVideo.load();
     }
     celebrationVideo.currentTime = 0;
+    celebrationVideo.loop = false;
+    celebrationVideo.muted = false;
     celebrationVideo.play().catch(() => {});
   }
 }
 
 function replayCelebrationVideo() {
   if (!celebrationVideo) return;
+  celebrationVideoCompletedOnce = false;
+  hideCelebrationOverlayLayer();
+  celebrationVideo.loop = false;
+  celebrationVideo.muted = false;
   celebrationVideo.currentTime = 0;
   celebrationVideo.play().catch(() => {});
 }
@@ -2000,9 +2088,15 @@ function closeCelebrationOverlay() {
   celebrationAnimationToken += 1;
   celebrationAnimating = false;
   setCelebrationDismissEnabled(true);
+  celebrationVideoCompletedOnce = false;
+  hideCelebrationOverlayLayer();
   if (celebrationVideo) {
     celebrationVideo.pause();
+    celebrationVideo.loop = false;
+    celebrationVideo.muted = false;
   }
+  restoreCelebrationLinks();
+  refreshGraph();
   unlockSceneContainer();
   releaseNodesAfterCelebration();
   simulation.alpha(0.6).restart();
@@ -2243,6 +2337,10 @@ if (celebrationReplayBtn) {
   celebrationReplayBtn.addEventListener("click", () => {
     replayCelebrationVideo();
   });
+}
+
+if (celebrationVideo) {
+  celebrationVideo.addEventListener("ended", handleCelebrationVideoEnded);
 }
 
 document.addEventListener("keydown", event => {

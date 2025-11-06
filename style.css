@@ -161,14 +161,14 @@ circle.node--background {
   gap: 10px;
   align-items: flex-start;
   opacity: 0;
-  transform: translateY(-12px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translate3d(-120%, -12px, 0);
+  transition: opacity 0.25s ease, transform 0.3s ease;
   pointer-events: none;
 }
 
 .hud__banner.hud__banner--visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .hud__banner::before {
@@ -235,14 +235,14 @@ circle.node--background {
   width: 240px;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translate3d(120%, 12px, 0);
+  transition: opacity 0.3s ease, transform 0.35s ease;
   backdrop-filter: blur(6px);
 }
 
 .hud__panel--hint.hud__panel--visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .hud__hint-list {
@@ -539,22 +539,18 @@ text.label.label--decorative {
   display: flex;
 }
 
-.celebration__content {
+.celebration__frame {
   position: relative;
   width: min(720px, 90vw);
-  background: rgba(3, 12, 42, 0.92);
+  background: rgba(4, 12, 24, 0.95);
   border: 1px solid rgba(63, 242, 255, 0.45);
-  box-shadow: 0 0 36px rgba(63, 242, 255, 0.35);
-  padding: 16px 12px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+  box-shadow: 0 40px 70px rgba(3, 12, 26, 0.6);
+  padding: 18px 18px 22px;
 }
 
 .celebration__title {
-  margin: 0;
-  font-size: clamp(16px, 2vw, 20px);
+  margin: 0 0 16px;
+  font-size: clamp(18px, 2.4vw, 24px);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
@@ -572,6 +568,7 @@ text.label.label--decorative {
   cursor: pointer;
   padding: 4px;
   line-height: 1;
+  z-index: 2;
 }
 
 .celebration__close:hover,
@@ -589,11 +586,13 @@ text.label.label--decorative {
   max-height: min(70vh, 480px);
   background: rgba(0, 0, 0, 0.8);
   box-shadow: 0 0 24px rgba(63, 242, 255, 0.2);
+  display: block;
 }
 
 .celebration__actions {
   display: flex;
   gap: 16px;
+  justify-content: center;
 }
 
 .celebration__actions button {
@@ -618,4 +617,31 @@ text.label.label--decorative {
 .celebration__actions button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.celebration__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.62);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.celebration__overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.celebration__overlay--visible {
+  opacity: 1;
+  pointer-events: auto;
 }
