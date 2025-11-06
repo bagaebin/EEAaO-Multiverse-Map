@@ -10,16 +10,28 @@ const NODE_LIBRARY = new Map([
           timeRange: [1.774, 2.274],
           rect: { x: 0.0021, y: 0.435, w: 0.352, h: 0.5548 },
           target: "sign spinner",
+          banner: {
+            body: "Irritately kicked the trash can.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [2.764, 3.264],
           rect: { x: 0.5496, y: 0.6763, w: 0.1029, h: 0.1873 },
           target: "actor",
+          banner: {
+            body: "Kicked your ex-boyfriend.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [4.5, 5],
           rect: { x: 0.4467, y: 0.3701, w: 0.1482, h: 0.1693 },
           target: "irs office",
+          banner: {
+            body: "Kissed your ex-boyfriend.",
+            highlight: "synced",
+          },
         },
       ],
     },
@@ -35,16 +47,28 @@ const NODE_LIBRARY = new Map([
           timeRange: [0.481, 0.981],
           rect: { x: 0.3335, y: 0.5503, w: 0.3005, h: 0.4503 },
           target: "soldier",
+          banner: {
+            body: "Hid your mouth with a terrible brown scarf.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [0.395, 0.895],
           rect: { x: 0.7411, y: 0.6583, w: 0.1112, h: 0.1117 },
           target: "grape",
+          banner: {
+            body: "Grabbed the bids and cried, saying My brothers and sisters!'",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [4.108, 4.608],
           rect: { x: 0.5825, y: 0.4386, w: 0.3561, h: 0.5259 },
           target: "statue",
+          banner: {
+            body: "Just stood, just staying standing.",
+            highlight: "synced",
+          },
         },
       ],
     },
@@ -60,16 +84,28 @@ const NODE_LIBRARY = new Map([
           timeRange: [2.229, 2.429],
           rect: { x: 0.8234, y: 0.5034, w: 0.1317, h: 0.2954 },
           target: "young evelyn",
+           banner: {
+            body: "Started your first love again.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [3.681, 4.181],
           rect: { x: 0.4652, y: 0.824, w: 0.0967, h: 0.1765 },
           target: "pottery",
+          banner: {
+            body: "Made a pottery of the mashed popcorn.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [4.5, 5],
           rect: { x: 0.4879, y: 0.3125, w: 0.0391, h: 0.0829 },
           target: "animation",
+          banner: {
+            body: "Directly jumped into the screen, believing you were there.",
+            highlight: "synced",
+          },
         },
       ],
     },
@@ -85,16 +121,28 @@ const NODE_LIBRARY = new Map([
           timeRange: [4.5, 5],
           rect: { x: 0.0082, y: 0.2441, w: 0.4487, h: 0.2666 },
           target: "actor",
+          banner: {
+            body: "Smiled to them and ask if they needed your signature.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [4.5, 5],
           rect: { x: 0.564, y: 0.3017, w: 0.4343, h: 0.3927 },
           target: "actor",
+          banner: {
+            body: "Smiled to them and ask if they needed your signature.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [4.5, 5],
           rect: { x: 0.0082, y: 0.4206, w: 0.3561, h: 0.5548 },
           target: "jail",
+          banner: {
+            body: "Sat under the desk and keep yourself isolated.",
+            highlight: "synced",
+          },
         },
       ],
     },
@@ -110,11 +158,19 @@ const NODE_LIBRARY = new Map([
           timeRange: [4.5, 5],
           rect: { x: 0.0288, y: 0.7052, w: 0.9448, h: 0.263 },
           target: "actor",
+          banner: {
+            body: "Enjoyed your fame.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [1.17, 1.37],
           rect: { x: 0.3438, y: 0.0315, w: 0.3252, h: 0.3746 },
           target: "grape",
+          banner: {
+            body: "Put the bids of your hat in your mouth and started to sing.",
+            highlight: "synced",
+          },
         },
       ],
     },
@@ -130,16 +186,28 @@ const NODE_LIBRARY = new Map([
           timeRange: [0.1, 0.6],
           rect: { x: 0.6361, y: 0.1972, w: 0.2244, h: 0.2774 },
           target: "youtube",
+          banner: {
+            body: "Opened Youtube and made some fake likes and views.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [4.5, 5],
           rect: { x: 0.1009, y: 0.6259, w: 0.2285, h: 0.3314 },
           target: "lab",
+          banner: {
+            body: "Created an electric organism",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [4.5, 5],
           rect: { x: 0.0226, y: 0.1396, w: 0.1997, h: 0.5007 },
           target: "jail",
+          banner: {
+            body: "Fill all the wall with countless papers in madness.",
+            highlight: "synced",
+          },
         },
       ],
     },
@@ -155,16 +223,28 @@ const NODE_LIBRARY = new Map([
           timeRange: [0, 0.1],
           rect: { x: 0.2923, y: 0.0171, w: 0.4096, h: 0.3134 },
           target: "singer",
+            banner: {
+            body: "Weared your hat, but look liked a gorgius queen.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [2.389, 2.589],
           rect: { x: 0.4076, y: 0.6475, w: 0.2635, h: 0.2774 },
           target: "slaughterhouse",
+          banner: {
+            body: "Sliced only by saying 'SLICE!'",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [3.989, 4.189],
           rect: { x: 0.7658, y: 0.6079, w: 0.14, h: 0.2882 },
           target: "young evelyn",
+          banner: {
+            body: "Collected a vast amount of trash.",
+            highlight: "synced",
+          },
         },
       ],
     },
@@ -180,21 +260,37 @@ const NODE_LIBRARY = new Map([
           timeRange: [0.264, 0.464],
           rect: { x: 0.4652, y: 0.3846, w: 0.0823, h: 0.1297 },
           target: "cat",
+          banner: {
+            body: "Developed a new way of breathing.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [2.958, 3.658],
           rect: { x: 0.6669, y: 0.435, w: 0.1688, h: 0.3206 },
           target: "jail",
+          banner: {
+            body: "Worked with the theif rats.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [2.958, 3.658],
           rect: { x: 0.2079, y: 0.4242, w: 0.1647, h: 0.5115 },
           target: "jail",
+          banner: {
+            body: "Worked with the theif rats.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [4.615, 4.815],
           rect: { x: 0, y: 0.2945, w: 0.9942, h: 0.1585 },
           target: "sign spinner",
+          banner: {
+            body: "Sang the song of 'CONCRETE JUNGLE'.",
+            highlight: "synced",
+          },
         },
       ],
     },
@@ -210,16 +306,28 @@ const NODE_LIBRARY = new Map([
           timeRange: [3.869, 4.369],
           rect: { x: 0.072, y: 0.3305, w: 0.3541, h: 0.634 },
           target: "bagle",
+          banner: {
+            body: "Make all the guys worship you.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [3.869, 4.369],
           rect: { x: 0.5455, y: 0.3701, w: 0.3396, h: 0.5764 },
           target: "bagle",
+          banner: {
+            body: "Make all the guys worship you.",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [2.622, 3.122],
           rect: { x: 0.4179, y: 0.5142, w: 0.1564, h: 0.4215 },
           target: "monster",
+          banner: {
+            body: "Reformed the red jacket.",
+            highlight: "synced",
+          },
         },
       ],
     },
@@ -235,11 +343,19 @@ const NODE_LIBRARY = new Map([
           timeRange: [1.096, 1.596],
           rect: { x: 0.3993, y: 0.2696, w: 0.1976, h: 0.1546 },
           target: "monster",
+          banner: {
+            body: "Implanted sunglasses in the eyes",
+            highlight: "synced",
+          },
         },
         {
           timeRange: [2.952, 3.452],
           rect: { x: 0.3561, y: 0.018, w: 0.2964, h: 0.0935 },
           target: "youtube",
+          banner: {
+            body: "Implanted sunglasses in the eyes",
+            highlight: "synced",
+          },
         },
       ],
     },
@@ -445,6 +561,10 @@ const NODE_LIBRARY = new Map([
           timeRange: [3.767, 4.267],
           rect: { x: 0.282, y: 0.4602, w: 0.2511, h: 0.5368 },
           target: "grape",
+          banner: {
+            body: "Marble fractures refract into grape corridors.",
+            highlight: "aligned",
+          },
         },
         {
           timeRange: [3.767, 4.267],
@@ -768,6 +888,29 @@ const HUD_BANNER_DISPLAY_MS = 2000;
 const DEFAULT_BANNER_HIGHLIGHT = "connected";
 const DEFAULT_BANNER_BODY = "A new branch of the multiverse is now accessible.";
 
+const NODE_BANNER_BODY_MAP = new Map([
+  ["young evelyn", "Prime Evelyn coordinates locked for crossverse syncing."],
+  ["bagle", "The everything bagel orbit cycles without collapse."],
+  ["actor", "Talent universe uplink streaming in flawlessly."],
+  ["irs office", "Audit dimension accepts your access credentials."],
+  ["singer", "Cabaret timeline microphone stays live."],
+  ["pottery", "Clay concerto timeline warms to your touch."],
+  ["sign spinner", "Neon signage whirl is guiding traffic your way."],
+  ["cat", "Quantum kitty purr frequency syncs with base reality."],
+  ["slaughterhouse", "Carnivore floor sealed behind sanitized protocols."],
+  ["tinder", "Swipe nebula now matches your crossverse profile."],
+  ["macho", "Bodybuilder strand flexes directly toward your node."],
+  ["lab", "Research lab arrays beam calibrated diagnostics."],
+  ["monster", "Kaiju ridge tremors settle under shared command."],
+  ["animation", "Storyboard flickers align frame by frame."],
+  ["youtube", "Streamverse satellites mirror your feed."],
+  ["soldier", "Combat drill timeline salutes your arrival."],
+  ["hotdog fingers", "Condiment continuum embraces your grip."],
+  ["jail", "Containment cells open controlled visitor path."],
+  ["statue", "Marble resonance hums with slow-breath signals."],
+  ["grape", "Vineyard cosmology ripens in synchronized loops."],
+]);
+
 const connectionBannerModule = (() => {
   const registry = new Map();
 
@@ -810,9 +953,10 @@ const connectionBannerModule = (() => {
 NODE_LIBRARY.forEach(config => {
   if (!config || config.decorative) return;
   const label = config.label ?? config.id;
+  const nodeKey = typeof config.id === "string" ? config.id.trim().toLowerCase() : "";
   connectionBannerModule.register(config.id, {
     title: label,
-    body: `${label} timeline link stabilized.`,
+    body: NODE_BANNER_BODY_MAP.get(nodeKey) ?? `${label} timeline link stabilized.`,
   });
 });
 
@@ -879,6 +1023,21 @@ const INACTIVITY_RESET_MS = 60 * 1000;
 const INACTIVITY_CHECK_INTERVAL = 5000;
 const INTERACTION_HINT_DURATION = 5000;
 
+function normalizeHotspotBanner(config) {
+  if (!config || typeof config !== "object") return null;
+  const normalized = {};
+  if (typeof config.title === "string" && config.title.trim()) {
+    normalized.title = config.title;
+  }
+  if (typeof config.body === "string" && config.body.trim()) {
+    normalized.body = config.body;
+  }
+  if (typeof config.highlight === "string" && config.highlight.trim()) {
+    normalized.highlight = config.highlight;
+  }
+  return Object.keys(normalized).length ? normalized : null;
+}
+
 function cloneNodeConfig(config = {}) {
   return {
     id: config.id,
@@ -891,6 +1050,13 @@ function cloneNodeConfig(config = {}) {
           timeRange: Array.isArray(h.timeRange) ? [...h.timeRange] : [],
           rect: h.rect ? { ...h.rect } : { x: 0, y: 0, w: 0, h: 0 },
           target: h.target,
+          banner:
+            normalizeHotspotBanner(h.banner) ??
+            normalizeHotspotBanner({
+              title: h.bannerTitle,
+              body: h.bannerBody,
+              highlight: h.bannerHighlight,
+            }),
         }))
       : [],
     appearance: config.appearance ? { ...config.appearance } : undefined,
@@ -935,6 +1101,8 @@ let celebrationTriggered = false;
 let celebrationAnimating = false;
 let celebrationHoldingNodes = false;
 let celebrationAnimationToken = 0;
+let celebrationVideoCompletedOnce = false;
+let celebrationStoredLinks = null;
 let lastInteractionAt = performance.now();
 let inactivityTimerId = null;
 
@@ -947,16 +1115,18 @@ const BODY_LOCK_CLASS = "body-scroll-locked";
 const SCROLL_GHOST_HEIGHT_VAR = "--scroll-ghost-height";
 const VIRTUAL_SCROLL_MULTIPLIER = 1;
 const TICK_AUDIO_SRC = "audios/tick.wav";
-const TICK_VOLUME = 0.8;
+const TICK_VOLUME = 0.56;
 const SCROLL_TICK_INTERVAL = 90;
 const CLICK_TICK_INTERVAL = 60;
 const SCROLL_DELTA_THRESHOLD = 2;
+const SCROLL_VELOCITY_NORMALIZER = 8;
 
 const celebrationOverlay = document.getElementById("celebration");
 const celebrationVideo = document.getElementById("celebrationVideo");
 const celebrationCloseBtn = document.getElementById("celebrationClose");
 const celebrationDismissBtn = document.getElementById("celebrationDismiss");
 const celebrationReplayBtn = document.getElementById("celebrationReplay");
+const celebrationOverlayLayer = document.getElementById("celebrationOverlayLayer");
 const loadingOverlay = document.getElementById("loadingOverlay");
 const loadingStatus = document.getElementById("loadingStatus");
 const loadingBar = document.getElementById("loadingBar");
@@ -981,6 +1151,7 @@ const mediaPreloadCache = new Map();
 let interactionHintTimerId = null;
 let pendingInteractionHint = false;
 let hudBannerTimer = null;
+let lastScrollFeedbackTime = performance.now();
 
 if (hudBanner) {
   hudBanner.setAttribute("aria-hidden", "true");
@@ -1423,14 +1594,18 @@ function triggerScrollFeedback(delta) {
   const magnitude = Math.abs(delta);
   if (magnitude < SCROLL_DELTA_THRESHOLD) return;
   const normalized = Math.min(1, magnitude / 180);
-  const playbackRate = 0.8 + normalized * 0.5;
+  const now = performance.now();
+  const elapsed = Math.max(now - lastScrollFeedbackTime, 1);
+  const velocity = Math.min(1, (magnitude / elapsed) / SCROLL_VELOCITY_NORMALIZER);
+  const playbackRate = 0.65 + normalized * 0.35 + velocity * 0.65;
+  lastScrollFeedbackTime = now;
   playTick({
     playbackRate,
     throttleKey: "scroll",
     throttleMs: SCROLL_TICK_INTERVAL,
     skipIfLoading: false,
   });
-  if (normalized > 0.45) {
+  if (normalized + velocity > 0.9) {
     triggerVibration(8);
   }
 }
@@ -1445,17 +1620,32 @@ function hideHudBanner() {
   hudBanner.setAttribute("aria-hidden", "true");
 }
 
-function displayHudBanner(nodeId, fallbackLabel) {
+function displayHudBanner(nodeId, fallbackLabel, overrides = null) {
   if (!hudBanner) return;
   const resolved = connectionBannerModule.resolve(nodeId, fallbackLabel);
+  const override = overrides && typeof overrides === "object" ? overrides : null;
+  const title =
+    (override?.title && override.title.trim()) ||
+    resolved.title ||
+    fallbackLabel ||
+    nodeId ||
+    "";
+  const highlight =
+    (override?.highlight && override.highlight.trim()) ||
+    resolved.highlight ||
+    DEFAULT_BANNER_HIGHLIGHT;
+  const body =
+    (override?.body && override.body.trim()) ||
+    resolved.body ||
+    DEFAULT_BANNER_BODY;
   if (hudBannerNode) {
-    hudBannerNode.textContent = resolved.title ?? fallbackLabel ?? nodeId ?? "";
+    hudBannerNode.textContent = title;
   }
   if (hudBannerStatus) {
-    hudBannerStatus.textContent = resolved.highlight ?? DEFAULT_BANNER_HIGHLIGHT;
+    hudBannerStatus.textContent = highlight;
   }
   if (hudBannerBody) {
-    hudBannerBody.textContent = resolved.body ?? DEFAULT_BANNER_BODY;
+    hudBannerBody.textContent = body;
   }
   hudBanner.classList.add("hud__banner--visible");
   hudBanner.setAttribute("aria-hidden", "false");
@@ -1467,10 +1657,10 @@ function displayHudBanner(nodeId, fallbackLabel) {
   }, HUD_BANNER_DISPLAY_MS);
 }
 
-function showConnectionBanner(nodeData) {
+function showConnectionBanner(nodeData, overrides) {
   if (!nodeData || nodeData.decorative) return;
   const label = nodeData.label ?? nodeData.id;
-  displayHudBanner(nodeData.id, label);
+  displayHudBanner(nodeData.id, label, overrides);
 }
 
 function getNodeId(nodeRef) {
@@ -1742,7 +1932,7 @@ function updateHotspotsVisibility(nodeData, vid) {
     hotspot.addEventListener("click", event => {
       event.stopPropagation();
       triggerClickFeedback();
-      openInteractiveNode(h.target);
+      openInteractiveNode(h.target, { bannerOverride: h.banner });
     });
     hotspotLayer.appendChild(hotspot);
     visibleCount += 1;
@@ -1843,12 +2033,16 @@ function resetProgressState() {
     celebrationAnimationToken += 1;
     celebrationAnimating = false;
     celebrationHoldingNodes = false;
+    restoreCelebrationLinks();
     releaseNodesAfterCelebration();
+    celebrationVideoCompletedOnce = false;
+    hideCelebrationOverlayLayer();
   }
 
   visitedInteractiveNodes.clear();
   celebrationTriggered = false;
   restoreDecorativeLinks();
+  celebrationStoredLinks = null;
   hideHudBanner();
   refreshGraph();
   if (typeof console !== "undefined" && typeof console.info === "function") {
@@ -1869,7 +2063,7 @@ function startInactivityWatcher() {
   }, INACTIVITY_CHECK_INTERVAL);
 }
 
-function openInteractiveNode(targetId) {
+function openInteractiveNode(targetId, options = {}) {
   markInteraction();
   const target = ensureNode(targetId);
   if (!target) return;
@@ -1879,7 +2073,7 @@ function openInteractiveNode(targetId) {
   }
   refreshGraph();
   if (createdLink) {
-    showConnectionBanner(target);
+    showConnectionBanner(target, options.bannerOverride);
   }
   showPopupForNode(target);
 }
@@ -1950,6 +2144,8 @@ function startCelebrationSequence() {
   pauseSimulationForCelebration();
   const runId = ++celebrationAnimationToken;
   setCelebrationDismissEnabled(false);
+  applyCelebrationHeartLinks();
+  refreshGraph();
   openCelebrationOverlay();
 
   const donutTargets = computeDonutTargets();
@@ -1965,10 +2161,75 @@ function startCelebrationSequence() {
 }
 
 function setCelebrationDismissEnabled(enabled) {
-  [celebrationCloseBtn, celebrationDismissBtn].forEach(btn => {
+  [celebrationCloseBtn, celebrationDismissBtn, celebrationReplayBtn].forEach(btn => {
     if (!btn) return;
     btn.disabled = !enabled;
   });
+}
+
+function hideCelebrationOverlayLayer() {
+  if (!celebrationOverlayLayer) return;
+  celebrationOverlayLayer.classList.remove("celebration__overlay--visible");
+  celebrationOverlayLayer.setAttribute("aria-hidden", "true");
+}
+
+function showCelebrationOverlayLayer() {
+  if (!celebrationOverlayLayer) return;
+  celebrationOverlayLayer.classList.add("celebration__overlay--visible");
+  celebrationOverlayLayer.setAttribute("aria-hidden", "false");
+}
+
+function handleCelebrationVideoEnded() {
+  if (!celebrationVideo || !isCelebrationOpen()) return;
+  if (celebrationVideoCompletedOnce) return;
+  celebrationVideoCompletedOnce = true;
+  celebrationVideo.loop = true;
+  celebrationVideo.muted = true;
+  celebrationVideo.play().catch(() => {});
+  showCelebrationOverlayLayer();
+}
+
+function cloneLinkDescriptor(link) {
+  return {
+    source: getNodeId(link.source),
+    target: getNodeId(link.target),
+  };
+}
+
+function isDecorativeLinkDescriptor(link) {
+  const sourceNode = nodes.find(n => n.id === link.source);
+  const targetNode = nodes.find(n => n.id === link.target);
+  return Boolean(sourceNode?.decorative) || Boolean(targetNode?.decorative);
+}
+
+function applyCelebrationHeartLinks() {
+  if (celebrationStoredLinks) return;
+  celebrationStoredLinks = links.map(cloneLinkDescriptor);
+  const interactiveNodes = nodes.filter(n => !n.decorative);
+  if (!interactiveNodes.length) return;
+  const decorativeLinks = celebrationStoredLinks.filter(isDecorativeLinkDescriptor);
+  const heartLinks = [];
+  interactiveNodes.forEach((nodeItem, index) => {
+    const nextNode = interactiveNodes[(index + 1) % interactiveNodes.length];
+    if (!nextNode) return;
+    heartLinks.push({ source: nodeItem.id, target: nextNode.id });
+  });
+  links.length = 0;
+  decorativeLinks.forEach(link => {
+    links.push({ source: link.source, target: link.target });
+  });
+  heartLinks.forEach(link => {
+    links.push({ source: link.source, target: link.target });
+  });
+}
+
+function restoreCelebrationLinks() {
+  if (!celebrationStoredLinks) return;
+  links.length = 0;
+  celebrationStoredLinks.forEach(link => {
+    links.push({ source: link.source, target: link.target });
+  });
+  celebrationStoredLinks = null;
 }
 
 function openCelebrationOverlay() {
@@ -1977,18 +2238,26 @@ function openCelebrationOverlay() {
   celebrationOverlay.classList.add("open");
   celebrationOverlay.setAttribute("aria-hidden", "false");
   lockSceneContainer();
+  celebrationVideoCompletedOnce = false;
+  hideCelebrationOverlayLayer();
   if (celebrationVideo) {
     if (CELEBRATION_VIDEO_SRC && celebrationVideo.src !== CELEBRATION_VIDEO_SRC) {
       celebrationVideo.src = CELEBRATION_VIDEO_SRC;
       celebrationVideo.load();
     }
     celebrationVideo.currentTime = 0;
+    celebrationVideo.loop = false;
+    celebrationVideo.muted = false;
     celebrationVideo.play().catch(() => {});
   }
 }
 
 function replayCelebrationVideo() {
   if (!celebrationVideo) return;
+  celebrationVideoCompletedOnce = false;
+  hideCelebrationOverlayLayer();
+  celebrationVideo.loop = false;
+  celebrationVideo.muted = false;
   celebrationVideo.currentTime = 0;
   celebrationVideo.play().catch(() => {});
 }
@@ -2000,9 +2269,15 @@ function closeCelebrationOverlay() {
   celebrationAnimationToken += 1;
   celebrationAnimating = false;
   setCelebrationDismissEnabled(true);
+  celebrationVideoCompletedOnce = false;
+  hideCelebrationOverlayLayer();
   if (celebrationVideo) {
     celebrationVideo.pause();
+    celebrationVideo.loop = false;
+    celebrationVideo.muted = false;
   }
+  restoreCelebrationLinks();
+  refreshGraph();
   unlockSceneContainer();
   releaseNodesAfterCelebration();
   simulation.alpha(0.6).restart();
@@ -2243,6 +2518,10 @@ if (celebrationReplayBtn) {
   celebrationReplayBtn.addEventListener("click", () => {
     replayCelebrationVideo();
   });
+}
+
+if (celebrationVideo) {
+  celebrationVideo.addEventListener("ended", handleCelebrationVideoEnded);
 }
 
 document.addEventListener("keydown", event => {
